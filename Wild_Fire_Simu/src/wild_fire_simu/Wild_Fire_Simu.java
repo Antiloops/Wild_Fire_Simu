@@ -14,7 +14,9 @@ public class Wild_Fire_Simu {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
+        
         //Test méthode getBooleenRandom()
         Terrain ter1 = new Terrain(0,"oui");
         boolean Proba;

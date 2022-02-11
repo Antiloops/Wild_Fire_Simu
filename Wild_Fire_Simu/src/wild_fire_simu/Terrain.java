@@ -12,6 +12,7 @@ import java.util.Random;
  * @author louis
  */
 public class Terrain {
+    
     private Random random = new Random();
     
     public Case[][] Grille_Terrain; // type sera suremment modifié
