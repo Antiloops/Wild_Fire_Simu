@@ -39,7 +39,7 @@ public class Wild_Fire_Simu {
             for(int j=0;j<terter1.Grille_Terrain[0].length;j++){
                 System.out.print(j+ "" + terter1.Grille_Terrain[i][j].Vegetation_Case + " ");
             }
-            System.out.println("");
+            System.out.println(" ");
         }
     }
 }
