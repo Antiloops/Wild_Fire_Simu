@@ -80,4 +80,21 @@ public class Terrain {
             return true; 
         }
     }
+    
+    public void Depart_Feu(int nb_depart){// cette méthode initialise la/les  position du feu 
+        Random random=new Random();
+        int longueur;
+        int largeur;
+        longueur=this.Grille_Terrain.length;
+        largeur=this.Grille_Terrain[0].length;
+        for(int i=0;i<nb_depart;i++){
+            int x=random.nextInt(longueur);
+            int y=random.nextInt(largeur);
+            if (this.Grille_Terrain[x][y].Combustion_Case!=1 && this.Grille_Terrain[x][y].Vegetation_Case==true){
+            this.Grille_Terrain[x][y].Combustion_Case=1;
+            }
+            
+        }
+        
+    }
 }
