@@ -1,5 +1,10 @@
 # Wild_Fire_Simu
-
+Version 3.0 :
+- Dans la classe Terrain :
+  - Création de la méthode propagation du feu (vent nul)
+- Dans la classe Case :
+  - ajout de l'attribut condamne dans la classe Case
+  
 Version 2.0 :
 - Import de la methode Depart_Feu()
 
