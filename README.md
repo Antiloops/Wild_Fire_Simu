@@ -1,4 +1,9 @@
 # Wild_Fire_Simu
+
+Version 3.1 :
+- Dans la classe Terrain :
+  - Modifier CreaTableau() et Affec_Vege() pour prendre en compte les Exceptions
+
 Version 3.0 :
 - Dans la classe Terrain :
   - Création de la méthode propagation du feu (vent nul)
