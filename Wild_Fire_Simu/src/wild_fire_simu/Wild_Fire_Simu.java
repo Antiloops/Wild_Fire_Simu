@@ -17,17 +17,22 @@ public class Wild_Fire_Simu {
     
     public static void main(String[] args) {
         
+        
+        /*
         //Test méthode getBooleenRandom()
-        Terrain ter1 = new Terrain(0,"oui");
+        Terrain terter1 = new Terrain(0,"oui");
         boolean Proba;
         for(int i=0;i<10;i++){
-           Proba = ter1.getBooleenRandom(30);
+           Proba = terter1.getBooleenRandom(30);
            System.out.println(Proba);
         }
+        */
         
+        
+        /*
         //Test méthode getBooleenRandom()
-        Terrain terter1 = new Terrain(0,"Clairsemée");
-        terter1.CreaTableau(14,15,15);
+        Terrain terter2 = new Terrain(0,"Clairsemée");
+        terter2.CreaTableau(14,15,15);
         int Densite = terter1.Conversion(terter1.Densite_Terrain);
         terter1.Affec_Vege(Densite);
         
@@ -41,5 +46,13 @@ public class Wild_Fire_Simu {
             }
             System.out.println(" ");
         }
+        */
+        
+        //Test de la gestion d'erreur 
+        Terrain terter3 = new Terrain(0,"Clairsemée");
+        terter3.CreaTableau(14,15,15);
+        int Densite = terter3.Conversion(terter3.Densite_Terrain);
+        terter3.Affec_Vege(Densite);
+        
     }
 }

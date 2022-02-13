@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package wild_fire_simu;
-
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -43,26 +43,47 @@ public class Terrain {
     
     // cette méthode initialise un tableau de dimension longueur x largeur dans lequel on fixe l'humidité de chaque case
     public void CreaTableau(int humidite, int longueur, int largeur){ 
-        Case[][] tableau=new Case[longueur][largeur];
-        for (int i=0;i<longueur;i++){ // attention avec l'ordre longueur largeur je suis pas sur de mon coup
-            for(int j=0;j<largeur;j++){
-                Case temp=new Case(humidite);
-                tableau[i][j]=temp;
-                //tableau[i][j].Humidite_Case=humidite;  // attention humidité est un int
-                
+        Case[][] tableau;
+        boolean ValCorrect = false; //Booleen qui est faux quand les 
+        while(ValCorrect == false){
+            try{
+                ValCorrect = true;
+                tableau=new Case[longueur][largeur];
+                for (int i=0;i<longueur;i++){ 
+                    for(int j=0;j<largeur;j++){
+                        Case temp=new Case(humidite);
+                        tableau[i][j]=temp;
+                    }
+                }
+            }catch(ArrayIndexOutOfBoundsException ex){ //Si la boucle for dépasse le nombre de case de la grille, on envoit un message d'erreur
+                ValCorrect = false;
+                System.out.println(" CreaTableau() -> Un problème d'indice est survenu");
+                throw ex;
+            }if(ValCorrect){
+                System.out.println(" CreaTableau() -> La tableau a bien été créé");
             }
+            this.Grille_Terrain = tableau;
         }
-        this.Grille_Terrain=tableau;
     }
     
     //Methode qui permet d'initialiser la végétation du terrain
     public void Affec_Vege(int Proba){
-        for(int i=0;i<this.Grille_Terrain.length;i++){
-            for(int j=0;j<this.Grille_Terrain[0].length;j++){
-                boolean Vege = getBooleenRandom(Proba);
-                Case Temp = this.Grille_Terrain[i][j];
-                Temp.Vegetation_Case = Vege;
+        boolean AffectCorrect = false;
+        try{
+            AffectCorrect = true;
+            for(int i=0;i<this.Grille_Terrain.length;i++){
+                for(int j=0;j<this.Grille_Terrain[0].length;j++){
+                    boolean Vege = getBooleenRandom(Proba);
+                    Case Temp = this.Grille_Terrain[i][j];
+                    Temp.Vegetation_Case = Vege;
+                }
             }
+        }catch(ArrayIndexOutOfBoundsException ex){ //Si la boucle for dépasse le nombre de case de la grille, on envoit un message d'erreur
+            AffectCorrect = false;
+            System.out.println(" Affec_Vege() -> Un problème d'indice est survenu");
+            throw ex;
+        }if(AffectCorrect){
+            System.out.println(" Affec_Vege() -> La Vegetation a bien été Affectée à la grille");
         }
     }
     
@@ -93,8 +114,6 @@ public class Terrain {
             if (this.Grille_Terrain[x][y].Combustion_Case!=1 && this.Grille_Terrain[x][y].Vegetation_Case==true){
             this.Grille_Terrain[x][y].Combustion_Case=1;
             }
-            
         }
-        
     }
 }
