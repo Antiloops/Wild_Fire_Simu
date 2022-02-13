@@ -9,6 +9,6 @@ package wild_fire_simu;
  *
  * @author louis
  */
-public class ErreurExe {
+public class ErreurExe extends Exception{
     
 }
