@@ -16,7 +16,7 @@ public class Case {
     public int Combustion_Case;
     public int Risque_Case;
     public int Humidite_Case;
-    public boolean condamne;
+    public boolean Condamne;
                     //Rajouter un attribut pour les ittération de combustion 
     
     //Constructeur   

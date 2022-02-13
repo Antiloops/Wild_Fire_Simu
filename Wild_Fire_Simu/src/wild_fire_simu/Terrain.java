@@ -116,6 +116,7 @@ public class Terrain {
             }
         }
     }
+    
     public void Propa_Feu_Nul(){ // méthode qui propage le feu à chaque itération pour un vent nul
         boolean crame; // ce boolean est vrai quand une case prend feu, faux sinon
         for (int i=0;i<this.Grille_Terrain.length;i++){
@@ -126,25 +127,25 @@ public class Terrain {
                     for (int a=-1;a<2;a++){ // on fait le test pour les 3 cases de 1% du haut
                         crame=getBooleenRandom(1);
                         if (crame==true){
-                            this.Grille_Terrain[i-2][j+a].condamne=true; // si le test est réussi la case est condamnée
+                            this.Grille_Terrain[i-2][j+a].Condamne=true; // si le test est réussi la case est condamnée
                         }
                     }
                     for (int b=-1;b<2;b++){ // on fait le test pour les 3 cases de 1% de gauche
                         crame=getBooleenRandom(1);
                         if (crame==true){
-                            this.Grille_Terrain[i+b][j-2].condamne=true; 
+                            this.Grille_Terrain[i+b][j-2].Condamne=true; 
                         }
                     }
                     for (int c=-1;c<2;c++){ // on fait le test pour les 3 cases de 1% du bas
                         crame=getBooleenRandom(1);
                         if (crame==true){
-                            this.Grille_Terrain[i+2][j+c].condamne=true; 
+                            this.Grille_Terrain[i+2][j+c].Condamne=true; 
                         }
                     }
                     for (int d=-1;d<2;d++){ // on fait le test pour les 3 cases de 1% de droite
                         crame=getBooleenRandom(1);
                         if (crame==true){
-                            this.Grille_Terrain[i+d][j+2].condamne=true; 
+                            this.Grille_Terrain[i+d][j+2].Condamne=true; 
                         }
                     }
                     
@@ -152,38 +153,38 @@ public class Terrain {
                     
                     crame=getBooleenRandom(20); 
                     if (crame==true){
-                            this.Grille_Terrain[i-1][j-1].condamne=true; //case en haut à gauche
+                            this.Grille_Terrain[i-1][j-1].Condamne=true; //case en haut à gauche
                         }
                     crame=getBooleenRandom(20); 
                     if (crame==true){
-                            this.Grille_Terrain[i+1][j-1].condamne=true; //case en bas à gauche
+                            this.Grille_Terrain[i+1][j-1].Condamne=true; //case en bas à gauche
                         }
                     crame=getBooleenRandom(20); 
                     if (crame==true){
-                            this.Grille_Terrain[i+1][j+1].condamne=true; //case en bas à droite
+                            this.Grille_Terrain[i+1][j+1].Condamne=true; //case en bas à droite
                     }
                             crame=getBooleenRandom(20); 
                     if (crame==true){
-                            this.Grille_Terrain[i-1][j+1].condamne=true; //case en haut à droite
+                            this.Grille_Terrain[i-1][j+1].Condamne=true; //case en haut à droite
                     }
                     
                     // on fait le test pour les cases à 30% de risque
                     
                     crame=getBooleenRandom(30); 
                     if (crame==true){
-                            this.Grille_Terrain[i-1][j].condamne=true; //case en haut
+                            this.Grille_Terrain[i-1][j].Condamne=true; //case en haut
                     }
                     crame=getBooleenRandom(30); 
                     if (crame==true){
-                            this.Grille_Terrain[i][j-1].condamne=true; //case à gauche
+                            this.Grille_Terrain[i][j-1].Condamne=true; //case à gauche
                     }
                     crame=getBooleenRandom(30); 
                     if (crame==true){
-                            this.Grille_Terrain[i+1][j].condamne=true; //case en bas
+                            this.Grille_Terrain[i+1][j].Condamne=true; //case en bas
                     }
                     crame=getBooleenRandom(30); 
                     if (crame==true){
-                            this.Grille_Terrain[i][j+1].condamne=true; //case à droite
+                            this.Grille_Terrain[i][j+1].Condamne=true; //case à droite
                     }
                 }
                     
