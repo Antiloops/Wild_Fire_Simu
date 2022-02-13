@@ -93,7 +93,7 @@ public class Terrain {
             if (this.Grille_Terrain[x][y].Combustion_Case!=1 && this.Grille_Terrain[x][y].Vegetation_Case==true){
             this.Grille_Terrain[x][y].Combustion_Case=1;
             }
-            System.out.println("toz");
+            
         }
         
     }
