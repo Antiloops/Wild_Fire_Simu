@@ -227,4 +227,16 @@ public class Terrain {
             return true; 
         }
     }
+    
+    // methode qui permet de transformer les cases condamnées en cases qui brûlent, de plus les cases déjà en feu mais pas encore réduit en cendre voient leur état de combustion augmenter de 1
+    public void Condamne(){
+        for (int i=0;i<this.Grille_Terrain.length;i++){
+            for (int j=0;j<this.Grille_Terrain.length;j++){
+                if (this.Grille_Terrain[i][j].Condamne_Case==true && this.Grille_Terrain[i][j].Combustion_Case<4){
+                    this.Grille_Terrain[i][j].Combustion_Case++;
+                    this.Grille_Terrain[i][j].Vegetation_Case=false;
+                }
+            }
+        }
+    }
 }
