@@ -87,21 +87,6 @@ public class Terrain {
         }
     }
     
-    
-    //Methode renvoyant une booleen aléatoire en fonction d'un pourcentage mis en argument 
-    public boolean getBooleenRandom(int Proba){
-        int a;
-        Random t = new Random();
-        // random integers in [0, 100]
-        a=t.nextInt(100);
-        if (a>Proba){
-            return false;
-        }
-        else{
-            return true; 
-        }
-    }
-    
     public void Depart_Feu(int nb_depart){// cette méthode initialise la/les  position du feu 
         Random random=new Random();
         int longueur;
@@ -189,6 +174,20 @@ public class Terrain {
                 }
                     
             }
+        }
+    }
+    
+    //Methode renvoyant une booleen aléatoire en fonction d'un pourcentage mis en argument 
+    public boolean getBooleenRandom(int Proba){
+        int a;
+        Random t = new Random();
+        // random integers in [0, 100]
+        a=t.nextInt(100);
+        if (a>Proba){
+            return false;
+        }
+        else{
+            return true; 
         }
     }
 }
