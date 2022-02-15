@@ -227,7 +227,7 @@ public class Terrain {
         }
     }
     
-        //Methode renvoyant une booleen aléatoire en fonction d'un pourcentage mis en argument !!VERSION FLOAT!!
+    //Methode renvoyant une booleen aléatoire en fonction d'un pourcentage mis en argument !!VERSION FLOAT!!
     public boolean getBooleenRandomFloat(float Proba){
         int a;
         Random t = new Random();

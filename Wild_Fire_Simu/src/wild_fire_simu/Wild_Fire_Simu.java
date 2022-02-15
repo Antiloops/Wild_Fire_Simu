@@ -5,6 +5,8 @@
  */
 package wild_fire_simu;
 
+import java.util.Scanner;
+
 /**
  *
  * @author louis
@@ -17,7 +19,7 @@ public class Wild_Fire_Simu {
     
     public static void main(String[] args) {
         
-         // test methode Conversion
+        // test methode Conversion
         /*
         Terrain terrain1=new Terrain(0,"touffue");
          float x=terrain1.Conversion(terrain1.Densite_Terrain);
