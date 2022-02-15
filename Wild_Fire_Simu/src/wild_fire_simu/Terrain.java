@@ -213,4 +213,18 @@ public class Terrain {
             return true; 
         }
     }
+    
+    //Methode renvoyant une booleen aléatoire en fonction d'un pourcentage mis en argument !!VERSION FLOAT!!
+    public boolean getBooleenRandomFloat(float Proba){
+        int a;
+        Random t = new Random();
+        // random integers in [0, 100]
+        a=t.nextInt(100);
+        if (a>Proba*100){
+            return false;
+        }
+        else{
+            return true; 
+        }
+    }
 }
