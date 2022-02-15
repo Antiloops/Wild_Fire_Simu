@@ -1,5 +1,9 @@
 # Wild_Fire_Simu
 
+Version 3.2 :
+- Dans la classe Vent :
+  - Ajout de la méthode Repartion_Vent()
+
 Version 3.1 :
 - Dans la classe Terrain :
   - Modification CreaTableau() et Affec_Vege() pour prendre en compte les Exceptions
