@@ -27,8 +27,7 @@ public class Wild_Fire_Simu {
            System.out.println(Proba);
         }
         */
-        
-        
+
         /*
         //Test méthode getBooleenRandom()
         Terrain terter2 = new Terrain(0,"Clairsemée");
