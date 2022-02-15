@@ -103,27 +103,38 @@ public class Terrain {
     }
     
     //Methode permettant de réaliser la propagation du feu
-    public void Propa_Feu(int[][] Repartion){
+    public void Propa_Feu(int[][] Repartition){
         for(int i=0;i<this.Grille_Terrain.length;i++){ //On parcourt la grille du terrain
             for(int j=0;j<this.Grille_Terrain[0].length;j++){
-                if(this.Grille_Terrain[i][j].Vegetation_Case == true){ //On verifie s'il y a de la vegetation sur la case 
-                    if(this.Grille_Terrain[i][j].Combustion_Case == 1 || this.Grille_Terrain[i][j].Combustion_Case == 2){ //On verifie si le niveau de combustion de la case et 1 ou 2
-                        for(int a=i-3;i+4<a;a++){  //On parcourt la grille de Repartion pour avoir les probabilités de combustion d'une case
-                            for(int b=j-3;j+4<b;b++){
-                                try{
-                                    float Proba_Case = this.Grille_Terrain[i][j].Humidite_Case/
-                                
-                                }catch(ArrayIndexOutOfBoundsException ex){
-                                    System.out.println(" Affec_Vege() -> Un problème d'indice est survenu");
-                                    throw ex;
-                                }
-                            }         
-                        }
+                if(this.Grille_Terrain[i][j].Combustion_Case == 1 || this.Grille_Terrain[i][j].Combustion_Case == 2){ //On verifie si le niveau de combustion de la case et 1 ou 2
+                    boolean Condamne;
+                    int Position_X = i-3;
+                    int Position_Y = j-3; 
+                    for(int a=0;a<Repartition.length;a++){  //On parcourt la grille de Repartion pour avoir les probabilités de combustion d'une case
+                        Position_X++;
+                        for(int b=0;b<Repartition[0].length;b++){
+                            Position_Y++;
+                            float Proba_Case;
+                            try{
+                                Proba_Case = (this.Grille_Terrain[Position_X][Position_Y].Humidite_Case/100)*(Repartition[a][b]/100);
+                            }catch(ArrayIndexOutOfBoundsException ex){
+                                System.out.println("Erreur d'indice");
+                                throw ex;
+                            }
+                            Condamne = getBooleenRandomV2(Proba_Case);
+                            if(Condamne = true){
+                                this.Grille_Terrain[Position_X][Position_Y].Condamne_Case = True
+                            }
+                        }         
                     }
+                }
+                if(this.Grille_Terrain[i][j].Vegetation_Case == true){ //On verifie s'il y a de la vegetation sur la case 
+
                 }
             }
         }
     }
+    
     
     public void Propa_Feu_Nul(){ // méthode qui propage le feu à chaque itération pour un vent nul
         boolean crame; // ce boolean est vrai quand une case prend feu, faux sinon
