@@ -26,15 +26,15 @@ public class Terrain {
     }
     
     // methode permettant de convertir le type de densité en une probabilité expoitable plus tard
-    public int Conversion(String densite){
+    public int Conversion(String densite){ // methode permettant de convertir le type de densité en une probabilité expoitable plus tard
         int probabilite=0;
-        if("Clairsemée".equals(densite)){ // comment ne plus se préoccuper des majuscules ?
+        if("Clairsemée".equalsIgnoreCase(densite)){ // comment ne plus se préoccuper des majuscules ?
             probabilite= 50; 
-        }else if ("Espacée".equals(densite)){
+        }else if ("Espacée".equalsIgnoreCase(densite)){
             probabilite= 75;
-        }else if("Touffue".equals(densite)){
+        }else if("Touffue".equalsIgnoreCase(densite)){
             probabilite=90;
-        }else if("Continue".equals(densite)){
+        }else if("Continue".equalsIgnoreCase(densite)){
             probabilite= 100;
         }
         return probabilite;
@@ -116,12 +116,14 @@ public class Terrain {
                             Position_Y++;
                             float Proba_Case;
                             try{
-                                Proba_Case = (this.Grille_Terrain[Position_X][Position_Y].Humidite_Case/100)*(Repartition[a][b]/100);
+                                if(this.Grille_Terrain[Position_X][Position_Y].Vegetation_Case == true){
+                                    Proba_Case = (this.Grille_Terrain[Position_X][Position_Y].Humidite_Case/100)*(Repartition[a][b]/100);
+                                }
                             }catch(ArrayIndexOutOfBoundsException ex){
                                 System.out.println("Erreur d'indice");
                                 throw ex;
                             }
-                            Condamne = getBooleenRandomV2(Proba_Case);
+                            Condamne = getBooleenRandomFloat(Proba_Case);
                             if(Condamne = true){
                                 this.Grille_Terrain[Position_X][Position_Y].Condamne_Case = True
                             }
@@ -136,7 +138,7 @@ public class Terrain {
     }
     
     
-    public void Propa_Feu_Nul(){ // méthode qui propage le feu à chaque itération pour un vent nul
+    /*public void Propa_Feu_Nul(){ // méthode qui propage le feu à chaque itération pour un vent nul
         boolean crame; // ce boolean est vrai quand une case prend feu, faux sinon
         for (int i=0;i<this.Grille_Terrain.length;i++){
             for (int j=0;j<this.Grille_Terrain[0].length;j++){ // on parcours le tableau
@@ -209,7 +211,7 @@ public class Terrain {
                     
             }
         }
-    }
+    }*/
     
     //Methode renvoyant une booleen aléatoire en fonction d'un pourcentage mis en argument 
     public boolean getBooleenRandom(int Proba){
@@ -222,6 +224,32 @@ public class Terrain {
         }
         else{
             return true; 
+        }
+    }
+    
+        //Methode renvoyant une booleen aléatoire en fonction d'un pourcentage mis en argument !!VERSION FLOAT!!
+    public boolean getBooleenRandomFloat(float Proba){
+        int a;
+        Random t = new Random();
+        // random integers in [0, 100]
+        a=t.nextInt(100);
+        if (a>Proba*100){
+            return false;
+        }
+        else{
+            return true; 
+        }
+    }
+    
+    // methode qui permet de transformer les cases condamnées en cases qui brûlent, de plus les cases déjà en feu mais pas encore réduit en cendre voient leur état de combustion augmenter de 1
+    public void Condamne(){
+        for (int i=0;i<this.Grille_Terrain.length;i++){
+            for (int j=0;j<this.Grille_Terrain.length;j++){
+                if (this.Grille_Terrain[i][j].Condamne_Case==true && this.Grille_Terrain[i][j].Combustion_Case<4){
+                    this.Grille_Terrain[i][j].Combustion_Case++;
+                    this.Grille_Terrain[i][j].Vegetation_Case=false;
+                }
+            }
         }
     }
 }
