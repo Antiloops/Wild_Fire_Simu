@@ -1,4 +1,7 @@
 # Wild_Fire_Simu
+ Version 3.5 :
+  - Dans la classe Terrain :
+   - ajout de la méthode Condamne, elle augmente les combustion de 1, et annule les vegetation des cases condamnées
  Version 3.4 :
  - Dans la classe Terrain :
   - ajout d'une méthode copiée/collée de getBooleenRandom, + modification de cette nouvelle méthode pour qu'elle puisse prendre en argument un float 
