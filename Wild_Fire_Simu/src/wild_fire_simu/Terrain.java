@@ -26,15 +26,15 @@ public class Terrain {
     }
     
     // methode permettant de convertir le type de densité en une probabilité expoitable plus tard
-    public int Conversion(String densite){
+    public int Conversion(String densite){ // methode permettant de convertir le type de densité en une probabilité expoitable plus tard
         int probabilite=0;
-        if("Clairsemée".equals(densite)){ // comment ne plus se préoccuper des majuscules ?
+        if("Clairsemée".equalsIgnoreCase(densite)){ // comment ne plus se préoccuper des majuscules ?
             probabilite= 50; 
-        }else if ("Espacée".equals(densite)){
+        }else if ("Espacée".equalsIgnoreCase(densite)){
             probabilite= 75;
-        }else if("Touffue".equals(densite)){
+        }else if("Touffue".equalsIgnoreCase(densite)){
             probabilite=90;
-        }else if("Continue".equals(densite)){
+        }else if("Continue".equalsIgnoreCase(densite)){
             probabilite= 100;
         }
         return probabilite;
