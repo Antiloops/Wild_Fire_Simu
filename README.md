@@ -6,8 +6,8 @@ Version 4.1
 - Dans la classe Terrain :
    - Dans Depart_Feu() ajout de this.Grille_Terrain[x][y].Brulure_Case = "A";
    - getBooleenRandomFloat() est changé en getBooleenRandomDouble() pour obtenir un double à la place d'un float
-   - Dans Condamne() ajout de this.Grille_Terrain[x][y].Brulure_Case = "A";
-   - Condamne() est changé en Iteration() (prise en compte tous les changement d'état des cases à réaliser)
+   - Condamne() est changé en Iteration() (avec modification du code pour la prise en compte tous les changement d'état des cases à réaliser)
+   - Modification de la méthode Propa_Feu()
 
 Version 4.0
 - Dans la classe Terrain :
