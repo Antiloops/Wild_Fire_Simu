@@ -51,8 +51,8 @@ public class Terrain {
                 tableau=new Case[longueur][largeur];
                 for (int i=0;i<longueur;i++){ 
                     for(int j=0;j<largeur;j++){
-                        Case temp=new Case(humidite);
-                        tableau[i][j]=temp;
+                        Case temp = new Case(humidite);
+                        tableau[i][j] = temp;
                     }
                 }
             }catch(ArrayIndexOutOfBoundsException ex){ //Si la boucle for dépasse le nombre de case de la grille, on envoit un message d'erreur
@@ -89,52 +89,76 @@ public class Terrain {
     
     public void Depart_Feu(int nb_depart){// cette méthode initialise la/les  position du feu 
         Random random=new Random();
-        int longueur;
-        int largeur;
-        longueur=this.Grille_Terrain.length;
-        largeur=this.Grille_Terrain[0].length;
+        int longueur = this.Grille_Terrain.length;;
+        int largeur = this.Grille_Terrain[0].length;;
         for(int i=0;i<nb_depart;i++){
             int x=random.nextInt(longueur);
-            int y=random.nextInt(largeur);
-            if (this.Grille_Terrain[x][y].Combustion_Case!=1 && this.Grille_Terrain[x][y].Vegetation_Case==true){
-            this.Grille_Terrain[x][y].Combustion_Case=1;
+            int y=random.nextInt(largeur); 
+            if (this.Grille_Terrain[x][y].Combustion_Case != 1 && this.Grille_Terrain[x][y].Vegetation_Case == true){
+                this.Grille_Terrain[x][y].Combustion_Case = 1;
+                this.Grille_Terrain[x][y].Brulure_Case = "A";
+                this.Grille_Terrain[x][y].Vegetation_Case = false;
             }
         }
     }
     
     //Methode permettant de réaliser la propagation du feu
-    public void Propa_Feu(int[][] Repartition){
+    public void Propa_Feu(int[][] Repartition,int Vent_Force){
         for(int i=0;i<this.Grille_Terrain.length;i++){ //On parcourt la grille du terrain
             for(int j=0;j<this.Grille_Terrain[0].length;j++){
-                if(this.Grille_Terrain[i][j].Combustion_Case == 1 || this.Grille_Terrain[i][j].Combustion_Case == 2){ //On verifie si le niveau de combustion de la case et 1 ou 2
-                    boolean Condamne;
-                    int Position_X = i-3;
-                    int Position_Y = j-3; 
+                
+                boolean Condamne; //Condition de propagation du feu
+                int Position_X = i-3; //Coordonnees de la case sur la grille correspondant à la première de la grille de propagation
+                int Position_Y = j-3;
+                
+                if(this.Grille_Terrain[i][j].Brulure_Case.equalsIgnoreCase("A")){ //On verifie si la case est en état : enflammé 
                     for(int a=0;a<Repartition.length;a++){  //On parcourt la grille de Repartion pour avoir les probabilités de combustion d'une case
                         Position_X++;
                         for(int b=0;b<Repartition[0].length;b++){
                             Position_Y++;
-                            float Proba_Case;
+                            double Proba_Case = 0;
                             try{
-                                if(this.Grille_Terrain[Position_X][Position_Y].Vegetation_Case == true){
-                                    Proba_Case = (this.Grille_Terrain[Position_X][Position_Y].Humidite_Case/100)*(Repartition[a][b]/100);
+                                if(this.Grille_Terrain[Position_X][Position_Y].Vegetation_Case == true && this.Grille_Terrain[Position_X][Position_Y].Condamne_Case == false){
+                                    Proba_Case = 0.5*(1+2*Vent_Force)*(this.Grille_Terrain[Position_X][Position_Y].Humidite_Case/100)*(Repartition[a][b]/100); //Calcul de la probabilite de combustion
                                 }
                             }catch(ArrayIndexOutOfBoundsException ex){
                                 System.out.println("Erreur d'indice");
                                 throw ex;
                             }
-                            Condamne = getBooleenRandomFloat(Proba_Case);
+                            Condamne = getBooleenRandomDouble(Proba_Case); //On teste si la case va bruler
                             if(Condamne = true){
-                                this.Grille_Terrain[Position_X][Position_Y].Condamne_Case = True
+                                this.Grille_Terrain[Position_X][Position_Y].Condamne_Case = true;
+                            }
+                        }         
+                    }
+                
+                if(this.Grille_Terrain[i][j].Brulure_Case.equalsIgnoreCase("BC")){ //On verifie si la case est en état : brulé chaud
+                    for(int a=0;a<Repartition.length;a++){  //On parcourt la grille de Repartion pour avoir les probabilités de combustion d'une case
+                        Position_X++;
+                        for(int b=0;b<Repartition[0].length;b++){
+                            Position_Y++;
+                            double Proba_Case = 0;
+                            try{
+                                if(this.Grille_Terrain[Position_X][Position_Y].Vegetation_Case == true && this.Grille_Terrain[Position_X][Position_Y].Condamne_Case == false){
+                                    Proba_Case = (this.Grille_Terrain[Position_X][Position_Y].Humidite_Case/100)*(Repartition[a][b]/100); //Calcul de la probabilite de combustion
+                                }
+                            }catch(ArrayIndexOutOfBoundsException ex){
+                                System.out.println("Erreur d'indice");
+                                throw ex;
+                            }
+                            Condamne = getBooleenRandomDouble(Proba_Case); //On teste si la case va bruler
+                            if(Condamne = true){
+                                this.Grille_Terrain[Position_X][Position_Y].Condamne_Case = true;
                             }
                         }         
                     }
                 }
-                if(this.Grille_Terrain[i][j].Vegetation_Case == true){ //On verifie s'il y a de la vegetation sur la case 
-
+                    
                 }
+                
             }
         }
+        Iteration();
     }
     
     
@@ -228,7 +252,7 @@ public class Terrain {
     }
     
     //Methode renvoyant une booleen aléatoire en fonction d'un pourcentage mis en argument !!VERSION FLOAT!!
-    public boolean getBooleenRandomFloat(float Proba){
+    public boolean getBooleenRandomDouble(double Proba){
         int a;
         Random t = new Random();
         // random integers in [0, 100]
@@ -242,12 +266,30 @@ public class Terrain {
     }
     
     // methode qui permet de transformer les cases condamnées en cases qui brûlent, de plus les cases déjà en feu mais pas encore réduit en cendre voient leur état de combustion augmenter de 1
-    public void Condamne(){
-        for (int i=0;i<this.Grille_Terrain.length;i++){
-            for (int j=0;j<this.Grille_Terrain.length;j++){
-                if (this.Grille_Terrain[i][j].Condamne_Case==true && this.Grille_Terrain[i][j].Combustion_Case<4){
-                    this.Grille_Terrain[i][j].Combustion_Case++;
-                    this.Grille_Terrain[i][j].Vegetation_Case=false;
+    public void Iteration(){
+        for (int i = 0;i<this.Grille_Terrain.length;i++){
+            for (int j = 0;j<this.Grille_Terrain.length;j++){
+                
+                if(this.Grille_Terrain[i][j].Condamne_Case == true && this.Grille_Terrain[i][j].Brulure_Case == ""){
+                    this.Grille_Terrain[i][j].Combustion_Case ++;
+                    this.Grille_Terrain[i][j].Vegetation_Case = false;
+                    this.Grille_Terrain[i][j].Brulure_Case = "A";
+                }
+                
+                else if(this.Grille_Terrain[i][j].Brulure_Case == "A" && this.Grille_Terrain[i][j].Combustion_Case >= 1 && this.Grille_Terrain[i][j].Combustion_Case <= 2){
+                    this.Grille_Terrain[i][j].Combustion_Case ++;
+                }
+                
+                else if(this.Grille_Terrain[i][j].Brulure_Case == "A" && this.Grille_Terrain[i][j].Combustion_Case == 3){
+                    this.Grille_Terrain[i][j].Combustion_Case ++;
+                    this.Grille_Terrain[i][j].Brulure_Case = "BC";
+                }
+                
+                else if(this.Grille_Terrain[i][j].Brulure_Case == "A" && this.Grille_Terrain[i][j].Combustion_Case > 3){
+                    Boolean Refroidit = getBooleenRandom(40);
+                    if(Refroidit == true){
+                        this.Grille_Terrain[i][j].Brulure_Case = "BF";
+                    }
                 }
             }
         }

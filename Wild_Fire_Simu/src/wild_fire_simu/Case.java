@@ -14,6 +14,7 @@ public class Case {
     //Initialisation des attributs 
     public Boolean Vegetation_Case;
     public int Combustion_Case;
+    public String Brulure_Case;
     public int Humidite_Case;
     public boolean Condamne_Case;
                     //Rajouter un attribut pour les ittération de combustion 
@@ -22,7 +23,6 @@ public class Case {
     public  Case (int Humidite_Case){
         this.Humidite_Case = Humidite_Case;
     }
-    
     
     //Getter -> Méthodes qui retourne les attributs de la case : la vegatation, la niveau de combustion ou le risque
     public Boolean getVegetation(){
@@ -33,10 +33,6 @@ public class Case {
         return this.Combustion_Case;
     }
     
-    //public int getRisque(){
-        //return this.Risque_Case;
-    //}
-    
     
     //Setter -> Méthodes qui modifie les attributs de la case par un argument en entrée pour : la vegetation, la combustion ou le risque
     public void setVegetation(Boolean Vegetation){
@@ -46,8 +42,5 @@ public class Case {
     public void setCombustion(int Combustion){
         this.Combustion_Case = Combustion;
     }
-    
-    //public void setRisque(int Risque){
-        //this.Risque_Case = Risque;
-    //}
+
 }
