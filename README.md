@@ -1,8 +1,17 @@
 # Wild_Fire_Simu
 
-Version 4.0
-- Dans la classe Terrain
+Version 4.1
+- Dans la classe Case :
+   - Ajout de l'attribut Brulure_Case ("" = pas bruler, "A" = Enflammé, "B" = Brulé chaud, "C" = Cendre/Brulé Froid)
+- Dans la classe Terrain :
+   - Dans Depart_Feu() ajout de this.Grille_Terrain[x][y].Brulure_Case = "A";
+   - getBooleenRandomFloat() est changé en getBooleenRandomDouble() pour obtenir un double à la place d'un float
+   - Dans Condamne() ajout de this.Grille_Terrain[x][y].Brulure_Case = "A";
+   - Condamne() est changé en Iteration() (prise en compte tous les changement d'état des cases à réaliser)
 
+Version 4.0
+- Dans la classe Terrain :
+   - Ajout de la méthode Propa_Feu()
 
  Version 3.5 :
  - Dans la classe Terrain :
