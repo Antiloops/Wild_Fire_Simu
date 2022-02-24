@@ -1,5 +1,12 @@
 # Wild_Fire_Simu
 
+Version 4.2
+- Dans la classe Case :
+   - public String Brulure_Case = "";
+- Dans la classe Vent :
+   - Ajout de l'attribut Repartition
+   - La méthode Repartion_Vent ne retourne plus une grille de répartition mais l'affecte à l'attribut Repartition
+
 Version 4.1
 - Dans la classe Case :
    - Ajout de l'attribut Brulure_Case ("" = pas bruler, "A" = Enflammé, "B" = Brulé chaud, "C" = Cendre/Brulé Froid)
