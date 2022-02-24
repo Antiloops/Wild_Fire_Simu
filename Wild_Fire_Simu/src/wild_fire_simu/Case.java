@@ -14,7 +14,7 @@ public class Case {
     //Initialisation des attributs 
     public Boolean Vegetation_Case;
     public int Combustion_Case;
-    public String Brulure_Case;
+    public String Brulure_Case = "";
     public int Humidite_Case;
     public boolean Condamne_Case;
                     //Rajouter un attribut pour les ittération de combustion 

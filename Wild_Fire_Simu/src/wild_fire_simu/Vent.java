@@ -14,6 +14,7 @@ public class Vent {
     //Initialisation des attributs     
     public String Sens_Vent;   
     public int Force_Vent;
+    public int[][] Repartition;
     
     //Constructeur  
     public Vent(String sens,int force){ 
@@ -22,7 +23,7 @@ public class Vent {
     }
     
     //Methode qui retourne la carte de probabilite de la probagation du feu en fonction des attributs de Vent
-    public int[][] Repartion_Vent(){
+    public void Repartion_Vent(){
         int[][] Repartition = new int[7][7];
         if(this.Force_Vent == 0){
             Repartition[0][0] = 0; Repartition[1][0] = 0; Repartition[2][0] = 0; Repartition[3][0] = 0; Repartition[4][0] = 0; Repartition[5][0] = 0; Repartition[6][0] = 0;
@@ -33,7 +34,7 @@ public class Vent {
             Repartition[0][5] = 0; Repartition[1][5] = 0; Repartition[2][5] = 1; Repartition[3][5] = 1; Repartition[4][5] = 1; Repartition[5][5] = 0; Repartition[6][5] = 0;
             Repartition[0][6] = 0; Repartition[1][6] = 0; Repartition[2][6] = 0; Repartition[3][6] = 0; Repartition[4][6] = 0; Repartition[5][6] = 0; Repartition[6][6] = 0;
         }
-        if("nord".equals(this.Sens_Vent)){
+        if("nord".equalsIgnoreCase(this.Sens_Vent)){
             if(this.Force_Vent == 1){
                 Repartition[0][0] = 0; Repartition[1][0] = 0; Repartition[2][0] = 0; Repartition[3][0] = 0; Repartition[4][0] = 0; Repartition[5][0] = 0; Repartition[6][0] = 0;
                 Repartition[0][1] = 0; Repartition[1][1] = 0; Repartition[2][1] = 0; Repartition[3][1] = 0; Repartition[4][1] = 0; Repartition[5][1] = 0; Repartition[6][1] = 0;
@@ -62,7 +63,7 @@ public class Vent {
                 Repartition[0][6] = 0; Repartition[1][6] = 0; Repartition[2][6] = 1; Repartition[3][6] = 5; Repartition[4][6] = 1; Repartition[5][6] = 0; Repartition[6][6] = 0;
             }
         }
-        if("sud".equals(this.Sens_Vent)){
+        if("sud".equalsIgnoreCase(this.Sens_Vent)){
             if(this.Force_Vent == 1){
                 Repartition[0][0] = 0; Repartition[1][0] = 0; Repartition[2][0] = 0; Repartition[3][0] = 0; Repartition[4][0] = 0; Repartition[5][0] = 0; Repartition[6][0] = 0;
                 Repartition[0][1] = 0; Repartition[1][1] = 0; Repartition[2][1] = 2; Repartition[3][1] = 5; Repartition[4][1] = 2; Repartition[5][1] = 0; Repartition[6][1] = 0;
@@ -91,7 +92,7 @@ public class Vent {
                 Repartition[0][6] = 0; Repartition[1][6] = 0; Repartition[2][6] = 0; Repartition[3][6] = 0; Repartition[4][6] = 0; Repartition[5][6] = 0; Repartition[6][6] = 0;
             }
         }
-        if("est".equals(this.Sens_Vent)){
+        if("est".equalsIgnoreCase(this.Sens_Vent)){
             if(this.Force_Vent == 1){
                 Repartition[0][0] = 0; Repartition[1][0] = 0; Repartition[2][0] = 0; Repartition[3][0] = 0; Repartition[4][0] = 0; Repartition[5][0] = 0; Repartition[6][0] = 0;
                 Repartition[0][1] = 0; Repartition[1][1] = 0; Repartition[2][1] = 0; Repartition[3][1] = 0; Repartition[4][1] = 0; Repartition[5][1] = 0; Repartition[6][1] = 0;
@@ -120,7 +121,7 @@ public class Vent {
                 Repartition[0][6] = 0; Repartition[1][6] = 0; Repartition[2][6] = 0; Repartition[3][6] = 0; Repartition[4][6] = 0; Repartition[5][6] = 0; Repartition[6][6] = 0;
             }
         }
-        if("ouest".equals(this.Sens_Vent)){
+        if("ouest".equalsIgnoreCase(this.Sens_Vent)){
             if(this.Force_Vent == 1){
                 Repartition[0][0] = 0; Repartition[1][0] = 0; Repartition[2][0] = 0; Repartition[3][0] = 0; Repartition[4][0] = 0; Repartition[5][0] = 0; Repartition[6][0] = 0;
                 Repartition[0][1] = 0; Repartition[1][1] = 0; Repartition[2][1] = 0; Repartition[3][1] = 0; Repartition[4][1] = 0; Repartition[5][1] = 0; Repartition[6][1] = 0;
@@ -149,6 +150,6 @@ public class Vent {
                 Repartition[0][6] = 0; Repartition[1][6] = 0; Repartition[2][6] = 0; Repartition[3][6] = 0; Repartition[4][6] = 0; Repartition[5][6] = 0; Repartition[6][6] = 0;
             }
         }
-        return Repartition;
+        this.Repartition = Repartition;
     }
 }

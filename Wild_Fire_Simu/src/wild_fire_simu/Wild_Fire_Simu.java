@@ -108,11 +108,58 @@ public class Wild_Fire_Simu {
          //test ok
         */
         
-        //Test de la gestion d'erreur 
+        /*//Test de la gestion d'erreur 
         Terrain terter3 = new Terrain(0,"Clairsemée");
         terter3.CreaTableau(14,15,15);
         int Densite = terter3.Conversion(terter3.Densite_Terrain);
-        terter3.Affec_Vege(Densite);
+        terter3.Affec_Vege(Densite);*/
+        
+        Terrain Foret = new Terrain(0,"Continue");
+        Foret.CreaTableau(50,20,20);
+        int Densite = Foret.Conversion(Foret.Densite_Terrain);
+        Foret.Affec_Vege(Densite);
+        
+        for(int i=0;i<Foret.Grille_Terrain.length;i++){
+            System.out.print(i + " | ");
+            for(int j=0;j<Foret.Grille_Terrain[0].length;j++){
+                System.out.print(j + "" + Foret.Grille_Terrain[i][j].Vegetation_Case + " ");
+            }
+            System.out.println("");
+        }
+        System.out.println("");
+        
+        Foret.Depart_Feu(1);
+        
+        for(int i=0;i<Foret.Grille_Terrain.length;i++){
+            for(int j=0;j<Foret.Grille_Terrain[0].length;j++){
+                    System.out.print(Foret.Grille_Terrain[i][j].Combustion_Case + "|");
+            }
+            System.out.println("");
+        }
+        System.out.println(""); 
+        
+        Vent wind = new Vent("nord",0);
+        wind.Repartion_Vent();
+        
+        for(int a=0;a<1;a++){
+            Foret.Propa_Feu(wind.Repartition,wind.Force_Vent);
+            System.out.println("Iteration " + a);
+            for(int i=0;i<Foret.Grille_Terrain.length;i++){
+                for(int j=0;j<Foret.Grille_Terrain[0].length;j++){
+                        System.out.print(Foret.Grille_Terrain[i][j].Combustion_Case + "|" + Foret.Grille_Terrain[i][j].Brulure_Case + " ");
+                }
+                System.out.println("");
+            }
+            System.out.println("");
+        }
+        
+        
+        
+        
+        
+        
+        
+        
         
     }
 }
