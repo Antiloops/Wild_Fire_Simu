@@ -1,5 +1,12 @@
 # Wild_Fire_Simu
 
+Version 4.3
+- Dans la classe Case :
+   - Suppression de toutes les méthodes Getter et Setter de chaque attribut
+- Dans la classe Terrain :
+   - Correction de la méthode Iteration()
+   - Méthode Propa_Feu() fonctionnelle
+
 Version 4.2
 - Dans la classe Case :
    - public String Brulure_Case = "";
