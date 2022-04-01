@@ -1,6 +1,7 @@
 # Wild_Fire_Simu
 
 Version 5.1
+!!! CODE NON FONCTIONNEL !!!
 - Dans la classe Terrain :
    - Dans la méthode Depart_Feu() :
       - Mise en place des getters et setters
