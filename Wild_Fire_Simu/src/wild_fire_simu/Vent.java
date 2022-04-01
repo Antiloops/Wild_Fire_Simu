@@ -12,14 +12,40 @@ package wild_fire_simu;
 public class Vent {
     
     //Initialisation des attributs     
-    public String Sens_Vent;   
-    public int Force_Vent;
-    public int[][] Repartition;
+    private String Sens_Vent;   
+    private int Force_Vent;
+    private int[][] Repartition_Vent;
     
     //Constructeur  
     public Vent(String sens,int force){ 
         this.Sens_Vent = sens;
         this.Force_Vent = force;
+    }
+    
+    //Getter -> Méthodes qui retourne les attributs de la case : la vegatation, la niveau de combustion ou le risque
+    public String getSens_Vent(){
+        return this.Sens_Vent;
+    }
+    
+    public int getForce_Vent(){
+        return this.Force_Vent;
+    }
+    
+    public int[][] getRepartition(){
+        return this.Repartition_Vent;
+    }
+    
+    //Setter -> Méthodes qui modifie les attributs de la case par un argument en entrée pour : la vegetation, la combustion ou le risque
+    public void setSens_Vent(String Sens_Vent){
+        this.Sens_Vent = Sens_Vent;
+    }
+    
+    public void setForce_Vent(int Force_Vent){
+        this.Force_Vent = Force_Vent;
+    }
+    
+    public void setCombustion(int[][] Repartition_Vent){
+        this.Repartition_Vent = Repartition_Vent;
     }
     
     //Methode qui retourne la carte de probabilite de la probagation du feu en fonction des attributs de Vent
@@ -150,6 +176,6 @@ public class Vent {
                 Repartition[0][6] = 0; Repartition[1][6] = 0; Repartition[2][6] = 0; Repartition[3][6] = 0; Repartition[4][6] = 0; Repartition[5][6] = 0; Repartition[6][6] = 0;
             }
         }
-        this.Repartition = Repartition;
+        this.Repartition_Vent = Repartition;
     }
 }

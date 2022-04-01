@@ -15,14 +15,40 @@ public class Terrain {
     
     private Random random = new Random();
     
-    public Case[][] Grille_Terrain; // Grille du terrain // type sera suremment modifié
-    public int Temps_Terrain;  //Ittération de la partie
-    public String Densite_Terrain; //Dentsité de vegetation du terrain
+    private Case[][] Grille_Terrain; // Grille du terrain // type sera suremment modifié
+    private int Temps_Terrain;  //Ittération de la partie
+    private String Densite_Terrain; //Dentsité de vegetation du terrain
     
     
     public Terrain(int Temps_Terrain,String Densite_Terrain){ //Constructeur
         this.Temps_Terrain = Temps_Terrain;
         this.Densite_Terrain = Densite_Terrain;
+    }
+    
+    //Getter -> Méthodes qui retourne les attributs de la case : la vegatation, la niveau de combustion ou le risque
+    public String getDensite_Terrain(){
+        return this.Densite_Terrain;
+    }
+    
+    public int getTemps_Terrain(){
+        return this.Temps_Terrain;
+    }
+    
+    public Case[][] getGrille_Terrain(){
+        return this.Grille_Terrain;
+    }
+    
+    //Setter -> Méthodes qui modifie les attributs de la case par un argument en entrée pour : la vegetation, la combustion ou le risque
+    public void setDensite_Terrain(String Densite_Terrain){
+        this.Densite_Terrain = Densite_Terrain;
+    }
+    
+    public void setTemps_Terrain(int Temps_Terrain){
+        this.Temps_Terrain = Temps_Terrain;
+    }
+    
+    public void setGrille_Terrain(Case[][] Grille_Terrain){
+        this.Grille_Terrain = Grille_Terrain;
     }
     
     // methode permettant de convertir le type de densité en une probabilité expoitable plus tard
@@ -75,7 +101,7 @@ public class Terrain {
                 for(int j=0;j<this.Grille_Terrain[0].length;j++){
                     boolean Vege = getBooleenRandom(Proba);
                     Case Temp = this.Grille_Terrain[i][j];
-                    Temp.Vegetation_Case = Vege;
+                    Temp.setVegetation(Vege);
                 }
             }
         }catch(ArrayIndexOutOfBoundsException ex){ //Si la boucle for dépasse le nombre de case de la grille, on envoit un message d'erreur
@@ -94,7 +120,7 @@ public class Terrain {
         for(int i=0;i<nb_depart;i++){
             int x=random.nextInt(longueur);
             int y=random.nextInt(largeur); 
-            if (this.Grille_Terrain[x][y].Combustion_Case != 1 && this.Grille_Terrain[x][y].Vegetation_Case == true){
+            if (this.Grille_Terrain[x][y].getCombustion() != 1 && this.Grille_Terrain[x][y].getVegetation() == true){
                 this.Grille_Terrain[x][y].Combustion_Case = 1;
                 this.Grille_Terrain[x][y].Brulure_Case = "A";
                 this.Grille_Terrain[x][y].Vegetation_Case = false;

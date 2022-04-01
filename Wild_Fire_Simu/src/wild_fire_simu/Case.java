@@ -12,12 +12,12 @@ package wild_fire_simu;
 public class Case {
     
     //Initialisation des attributs 
-    public Boolean Vegetation_Case;
-    public int Combustion_Case;
-    public String Brulure_Case = "";
-    public int Humidite_Case;
-    public boolean Condamne_Case;
-                    //Rajouter un attribut pour les ittération de combustion 
+    private Boolean Vegetation_Case;
+    private int Combustion_Case;
+    private String Brulure_Case = "";
+    private int Humidite_Case;
+    private boolean Condamne_Case;
+    //Rajouter un attribut pour les ittération de combustion 
     
     //Constructeur   
     public  Case (int Humidite_Case){
@@ -33,14 +33,37 @@ public class Case {
         return this.Combustion_Case;
     }
     
+    public String getBrulure(){
+        return this.Brulure_Case;
+    }
+    
+    public int getHumidite(){
+        return this.Humidite_Case;
+    }
+    
+    public Boolean getCondamne(){
+        return this.Condamne_Case;
+    }
     
     //Setter -> Méthodes qui modifie les attributs de la case par un argument en entrée pour : la vegetation, la combustion ou le risque
-    public void setVegetation(Boolean Vegetation){
-        this.Vegetation_Case = Vegetation;
+    public void setVegetation(Boolean Vegetation_Case){
+        this.Vegetation_Case = Vegetation_Case;
     }
     
-    public void setCombustion(int Combustion){
-        this.Combustion_Case = Combustion;
+    public void setCombustion(int Combustion_Case){
+        this.Combustion_Case = Combustion_Case;
     }
-
+    
+    public void setBrulure(String Brulure_Case){
+        this.Brulure_Case = Brulure_Case;
+    }
+    
+    public void setHumidite(int Humidite_Case){
+        this.Humidite_Case = Humidite_Case;
+    }
+    
+    public void setCondamne(Boolean Condamne_Case){
+        this.Condamne_Case = Condamne_Case;
+    }
+    
 }
