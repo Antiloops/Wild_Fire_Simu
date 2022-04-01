@@ -1,6 +1,16 @@
 # Wild_Fire_Simu
 
+Version 5.1
+- Dans la classe Terrain :
+   - Dans la méthode Depart_Feu() :
+      - Mise en place des getters et setters
+   - Dans la méthode Propa_Feu() :
+      - Mise en place des getters et setters
+   - Dans la classe Iteration()
+      - Mise en place des getters et setters
+
 Version 5.0
+!!! CODE NON FONCTIONNEL !!!
 - Dans la classe Case : 
    - Changement des attributs de public à private
    - Ajout de getter et de setter pour chaque attribut
