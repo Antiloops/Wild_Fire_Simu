@@ -1,5 +1,16 @@
 # Wild_Fire_Simu
 
+Version 5.0
+- Dans la classe Case : 
+   - Changement des attributs de public à private
+   - Ajout de getter et de setter pour chaque attribut
+- Dans la classe Vent : 
+   - Changement des attributs de public à private
+   - Ajout de getter et de setter pour chaque attribut
+- Dans la classe Terrain :
+   - Changement des attributs de public à private
+   - Ajout de getter et de setter pour chaque attribut
+
 Version 4.3
 - Dans la classe Case :
    - Suppression de toutes les méthodes Getter et Setter de chaque attribut
