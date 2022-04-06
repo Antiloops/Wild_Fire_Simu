@@ -1,5 +1,15 @@
 # Wild_Fire_Simu
 
+Version 6.1
+- Dans la classe Terrain :
+   - Dans la méthode Propa_Feu()  :
+      - Correction de problème d'indentation -> Mauvaise propagation
+      - Problème de gestion des erreurs et compteurs -> Comportement des cases brûlées chaud pas bonne
+   - Dans la méthode Iteration() :
+      - Ajout de condition pour une case qui s'enflamme -> cases non inflammable qui s'enflamme  
+      - Modification de la comparaison du niveau de combustion : " == " => ".equalsIgnoreCase()"
+	
+
 Version 6.0
 - RECOMPILATION DU CODE EN ENTIER 
 !!! VERSION DU CODE FONCTIONNEL !!!
