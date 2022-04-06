@@ -17,6 +17,9 @@ public class Wild_Fire_Simu {
      * @param args the command line arguments
      */
     
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_RESET = "\u001B[0m";
+    
     public static void main(String[] args) {
         
         // test methode Conversion
@@ -35,20 +38,20 @@ public class Wild_Fire_Simu {
         int largeur;
         Scanner sc = new Scanner(System.in);
         
-         Terrain terrain1=new Terrain(0,"Continue");
-         System.out.println("entrez une longueur");
-         longueur=sc.nextInt();
-         System.out.println("entrez une largeur"); // attention ordre longueur puis largeur ou l'inverse ?
-         largeur=sc.nextInt();
-         
-         terrain1.CreaTableau(10, longueur, largeur);
-         for (int i=0;i<longueur;i++){ // attention avec l'ordre longueur largeur je suis pas sur de mon coup
-            for(int j=0;j<largeur;j++){
-         System.out.println(terrain1.Grille_Terrain[i][j].Humidite_Case);
+        Terrain terrain1=new Terrain(0,"Continue");
+        System.out.println("entrez une longueur");
+        longueur=sc.nextInt();
+        System.out.println("entrez une largeur"); // attention ordre longueur puis largeur ou l'inverse ?
+        largeur=sc.nextInt();
+
+        terrain1.CreaTableau(10, longueur, largeur);
+        for (int i=0;i<longueur;i++){ // attention avec l'ordre longueur largeur je suis pas sur de mon coup
+           for(int j=0;j<largeur;j++){
+               System.out.println(terrain1.Grille_Terrain[i][j].Humidite_Case);
             }
-         }
-         //test ok (à vérifier pcq méthode modifiée entre temps)
-         */
+        }
+        //test ok (à vérifier pcq méthode modifiée entre temps)
+        */
         
         
         /*
@@ -101,7 +104,7 @@ public class Wild_Fire_Simu {
          terrain1.Depart_Feu(1);
          for (int i=0;i<longueur;i++){ // attention avec l'ordre longueur largeur je suis pas sur de mon coup
             for(int j=0;j<largeur;j++){
-         System.out.print(" "+terrain1.Grille_Terrain[i][j].Combustion_Case);
+                System.out.print(" "+terrain1.Grille_Terrain[i][j].Combustion_Case);
          }
             System.out.println("\n");
          }
@@ -124,7 +127,25 @@ public class Wild_Fire_Simu {
         for(int i=0;i<Foret.getGrille().length;i++){
                 for(int j=0;j<Foret.getGrille()[0].length;j++){
                     if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getCombustion() == 0){
-                        System.out.print("X" + " ");
+                        System.out.print(ANSI_RED + "X" + " " + ANSI_RESET);
+                    }
+                    else if(Foret.getGrille()[i][j].getVegetation() == true && Foret.getGrille()[i][j].getCombustion() == 0){
+                        System.out.print("^" + " ");
+                    }
+                    else{
+                        System.out.print(Foret.getGrille()[i][j].getBrulure() + " ");
+                    }
+                }
+            System.out.println("|");
+        }
+        System.out.println("");
+        
+        
+        /*
+        for(int i=0;i<Foret.getGrille().length;i++){
+                for(int j=0;j<Foret.getGrille()[0].length;j++){
+                    if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getCombustion() == 0){
+                        System.out.print(ANSI_RED + "X" + " " + ANSI_RESET);
                     }
                     else if(Foret.getGrille()[i][j].getVegetation() == true && Foret.getGrille()[i][j].getCombustion() == 0){
                         System.out.print("^" + " ");
@@ -140,13 +161,13 @@ public class Wild_Fire_Simu {
         Vent wind = new Vent("nord",3);
         wind.Repartion_Vent();
         
-        for(int a=0;a<20;a++){
+        for(int a=0;a<4;a++){
             Foret.Propa_Feu(wind.getRepartition(),wind.getForce());
             System.out.println("Iteration " + a);
             for(int i=0;i<Foret.getGrille().length;i++){
                 for(int j=0;j<Foret.getGrille()[0].length;j++){
                     if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getCombustion() == 0){
-                        System.out.print("X" + " ");
+                        System.out.print(ANSI_RED + "X" + " " + ANSI_RESET);
                     }
                     else if(Foret.getGrille()[i][j].getVegetation() == true && Foret.getGrille()[i][j].getCombustion() == 0){
                         System.out.print("^" + " ");
@@ -164,6 +185,6 @@ public class Wild_Fire_Simu {
                 Thread.currentThread().interrupt();
             }
         }  
-       
+        */
     }
 }
