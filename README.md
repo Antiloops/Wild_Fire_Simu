@@ -1,5 +1,9 @@
 # Wild_Fire_Simu
 
+Version 6.0
+- RECOMPILATION DU CODE EN ENTIER 
+!!! VERSION DU CODE FONCTIONNEL !!!
+
 Version 5.1
 !!! CODE NON FONCTIONNEL !!!
 - Dans la classe Terrain :
