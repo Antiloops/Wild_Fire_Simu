@@ -114,52 +114,56 @@ public class Wild_Fire_Simu {
         int Densite = terter3.Conversion(terter3.Densite_Terrain);
         terter3.Affec_Vege(Densite);*/
         
-        Terrain Foret = new Terrain(0,"Continue");
-        Foret.CreaTableau(50,20,20);
-        int Densite = Foret.Conversion(Foret.Densite_Terrain);
+        Terrain Foret = new Terrain(0,"Touffue");
+        Foret.CreaTableau(3,10,10);
+        int Densite = Foret.Conversion(Foret.getDensite());
         Foret.Affec_Vege(Densite);
-        
-        for(int i=0;i<Foret.Grille_Terrain.length;i++){
-            System.out.print(i + " | ");
-            for(int j=0;j<Foret.Grille_Terrain[0].length;j++){
-                System.out.print(j + "" + Foret.Grille_Terrain[i][j].Vegetation_Case + " ");
-            }
-            System.out.println("");
-        }
-        System.out.println("");
         
         Foret.Depart_Feu(1);
         
-        for(int i=0;i<Foret.Grille_Terrain.length;i++){
-            for(int j=0;j<Foret.Grille_Terrain[0].length;j++){
-                    System.out.print(Foret.Grille_Terrain[i][j].Combustion_Case + "|");
+        for(int i=0;i<Foret.getGrille().length;i++){
+                for(int j=0;j<Foret.getGrille()[0].length;j++){
+                    if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getCombustion() == 0){
+                        System.out.print("X" + " ");
+                    }
+                    else if(Foret.getGrille()[i][j].getVegetation() == true && Foret.getGrille()[i][j].getCombustion() == 0){
+                        System.out.print("^" + " ");
+                    }
+                    else{
+                        System.out.print(Foret.getGrille()[i][j].getBrulure() + " ");
+                    }
+                }
+                System.out.println("|");
             }
             System.out.println("");
-        }
-        System.out.println(""); 
         
-        Vent wind = new Vent("nord",0);
+        Vent wind = new Vent("nord",3);
         wind.Repartion_Vent();
         
-        for(int a=0;a<1;a++){
-            Foret.Propa_Feu(wind.Repartition,wind.Force_Vent);
+        for(int a=0;a<20;a++){
+            Foret.Propa_Feu(wind.getRepartition(),wind.getForce());
             System.out.println("Iteration " + a);
-            for(int i=0;i<Foret.Grille_Terrain.length;i++){
-                for(int j=0;j<Foret.Grille_Terrain[0].length;j++){
-                        System.out.print(Foret.Grille_Terrain[i][j].Combustion_Case + "|" + Foret.Grille_Terrain[i][j].Brulure_Case + " ");
+            for(int i=0;i<Foret.getGrille().length;i++){
+                for(int j=0;j<Foret.getGrille()[0].length;j++){
+                    if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getCombustion() == 0){
+                        System.out.print("X" + " ");
+                    }
+                    else if(Foret.getGrille()[i][j].getVegetation() == true && Foret.getGrille()[i][j].getCombustion() == 0){
+                        System.out.print("^" + " ");
+                    }
+                    else{
+                        System.out.print(Foret.getGrille()[i][j].getBrulure() + " ");
+                    }
                 }
-                System.out.println("");
+                System.out.println("|");
             }
             System.out.println("");
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
+            try{
+                 Thread.sleep(500);
+            }catch(InterruptedException ex){
+                Thread.currentThread().interrupt();
+            }
+        }  
+       
     }
 }

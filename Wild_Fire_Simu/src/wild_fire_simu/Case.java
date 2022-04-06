@@ -7,7 +7,7 @@ package wild_fire_simu;
 
 /**
  *
- * @author louis
+ * @author Louis SAVIGNAC et Mathis LOPEZ
  */
 public class Case {
     
@@ -17,7 +17,6 @@ public class Case {
     private String Brulure_Case = "";
     private int Humidite_Case;
     private boolean Condamne_Case;
-    //Rajouter un attribut pour les ittération de combustion 
     
     //Constructeur   
     public  Case (int Humidite_Case){

@@ -23,11 +23,11 @@ public class Vent {
     }
     
     //Getter -> Méthodes qui retourne les attributs de la case : la vegatation, la niveau de combustion ou le risque
-    public String getSens_Vent(){
+    public String getSens(){
         return this.Sens_Vent;
     }
     
-    public int getForce_Vent(){
+    public int getForce(){
         return this.Force_Vent;
     }
     
@@ -36,15 +36,15 @@ public class Vent {
     }
     
     //Setter -> Méthodes qui modifie les attributs de la case par un argument en entrée pour : la vegetation, la combustion ou le risque
-    public void setSens_Vent(String Sens_Vent){
+    public void setSens(String Sens_Vent){
         this.Sens_Vent = Sens_Vent;
     }
     
-    public void setForce_Vent(int Force_Vent){
+    public void setForce(int Force_Vent){
         this.Force_Vent = Force_Vent;
     }
     
-    public void setCombustion(int[][] Repartition_Vent){
+    public void setRepartition(int[][] Repartition_Vent){
         this.Repartition_Vent = Repartition_Vent;
     }
     
@@ -82,9 +82,9 @@ public class Vent {
             if(this.Force_Vent == 3){
                 Repartition[0][0] = 0; Repartition[1][0] = 0; Repartition[2][0] = 0; Repartition[3][0] = 0; Repartition[4][0] = 0; Repartition[5][0] = 0; Repartition[6][0] = 0;
                 Repartition[0][1] = 0; Repartition[1][1] = 0; Repartition[2][1] = 0; Repartition[3][1] = 0; Repartition[4][1] = 0; Repartition[5][1] = 0; Repartition[6][1] = 0;
-                Repartition[0][2] = 0; Repartition[1][2] = 1; Repartition[2][2] = 0; Repartition[3][2] = 0; Repartition[4][2] = 0; Repartition[5][2] = 1; Repartition[6][2] = 0;
-                Repartition[0][3] = 0; Repartition[1][3] = 1; Repartition[2][3] = 10; Repartition[3][3] = 0; Repartition[4][3] = 10; Repartition[5][3] = 1; Repartition[6][3] = 0;
-                Repartition[0][4] = 0; Repartition[1][4] = 1; Repartition[2][4] = 50; Repartition[3][4] = 70; Repartition[4][4] = 50; Repartition[5][4] = 1; Repartition[6][4] = 0;
+                Repartition[0][2] = 0; Repartition[1][2] = 0; Repartition[2][2] = 0; Repartition[3][2] = 0; Repartition[4][2] = 0; Repartition[5][2] = 0; Repartition[6][2] = 0;
+                Repartition[0][3] = 0; Repartition[1][3] = 0; Repartition[2][3] = 10; Repartition[3][3] = 0; Repartition[4][3] = 10; Repartition[5][3] = 0; Repartition[6][3] = 0;
+                Repartition[0][4] = 0; Repartition[1][4] = 0; Repartition[2][4] = 50; Repartition[3][4] = 70; Repartition[4][4] = 50; Repartition[5][4] = 0; Repartition[6][4] = 0;
                 Repartition[0][5] = 0; Repartition[1][5] = 0; Repartition[2][5] = 20; Repartition[3][5] = 30; Repartition[4][5] = 20; Repartition[5][5] = 0; Repartition[6][5] = 0;
                 Repartition[0][6] = 0; Repartition[1][6] = 0; Repartition[2][6] = 1; Repartition[3][6] = 5; Repartition[4][6] = 1; Repartition[5][6] = 0; Repartition[6][6] = 0;
             }

@@ -9,7 +9,7 @@ import java.util.Random;
 
 /**
  *
- * @author louis
+ * @author Louis SAVIGNAC et Mathis LOPEZ
  */
 public class Terrain {
     
@@ -26,29 +26,29 @@ public class Terrain {
     }
     
     //Getter -> Méthodes qui retourne les attributs de la case : la vegatation, la niveau de combustion ou le risque
-    public String getDensite_Terrain(){
-        return this.Densite_Terrain;
-    }
-    
-    public int getTemps_Terrain(){
-        return this.Temps_Terrain;
-    }
-    
-    public Case[][] getGrille_Terrain(){
+    public Case[][] getGrille(){
         return this.Grille_Terrain;
     }
     
-    //Setter -> Méthodes qui modifie les attributs de la case par un argument en entrée pour : la vegetation, la combustion ou le risque
-    public void setDensite_Terrain(String Densite_Terrain){
-        this.Densite_Terrain = Densite_Terrain;
+    public int getTemps(){
+        return this.Temps_Terrain;
     }
     
-    public void setTemps_Terrain(int Temps_Terrain){
+    public String getDensite(){
+        return this.Densite_Terrain;
+    }
+    
+    //Setter -> Méthodes qui modifie les attributs de la case par un argument en entrée pour : la vegetation, la combustion ou le risque
+    public void setCase(Case[][] Grille_Terrain){
+        this.Grille_Terrain = Grille_Terrain;
+    }
+    
+    public void setCombustion(int Temps_Terrain){
         this.Temps_Terrain = Temps_Terrain;
     }
     
-    public void setGrille_Terrain(Case[][] Grille_Terrain){
-        this.Grille_Terrain = Grille_Terrain;
+    public void setDensite(String Densite_Terrain){
+        this.Densite_Terrain = Densite_Terrain;
     }
     
     // methode permettant de convertir le type de densité en une probabilité expoitable plus tard
@@ -120,7 +120,7 @@ public class Terrain {
         for(int i=0;i<nb_depart;i++){
             int x=random.nextInt(longueur);
             int y=random.nextInt(largeur); 
-            if (this.Grille_Terrain[x][y].getCombustion() < 1 && this.Grille_Terrain[x][y].getVegetation() == true){
+            if (this.Grille_Terrain[x][y].getCombustion() !=1 && this.Grille_Terrain[x][y].getBrulure() == "" && this.Grille_Terrain[x][y].getVegetation() == true){
                 this.Grille_Terrain[x][y].setCombustion(1);
                 this.Grille_Terrain[x][y].setBrulure("A");
                 this.Grille_Terrain[x][y].setVegetation(false);
@@ -134,31 +134,39 @@ public class Terrain {
             for(int j=0;j<this.Grille_Terrain[0].length;j++){
                 
                 boolean Condamne; //Condition de propagation du feu
-                int Position_X = i-3; //Coordonnees de la case sur la grille correspondant à la première de la grille de propagation
-                int Position_Y = j-3;
+                int Position_X = i; //Coordonnees de la case sur la grille correspondant à la première de la grille de propagation
+                int Position_Y = j;
                 
                 if(this.Grille_Terrain[i][j].getBrulure().equalsIgnoreCase("A")){ //On verifie si la case est en état : enflammé 
+                    Position_X = Position_X-4;
+                    Position_Y = Position_Y-4;
                     for(int a=0;a<Repartition.length;a++){  //On parcourt la grille de Repartion pour avoir les probabilités de combustion d'une case
                         Position_X++; //On parcourt en même temps la grille du terrain pour faire le tirage de la condamnation d'une case
                         for(int b=0;b<Repartition[0].length;b++){
                             Position_Y++;
-                            double Proba_Case = 0;
+                            float Proba_Case = 0;
                             try{
                                 if(this.Grille_Terrain[Position_X][Position_Y].getVegetation() == true && this.Grille_Terrain[Position_X][Position_Y].getCondamne() == false){ //On effectue le tirage uniquement sur les cases avec forêt non condamnée
-                                    Proba_Case = (this.Grille_Terrain[Position_X][Position_Y].getHumidite()/100)*(Repartition[a][b]/100); //Calcul de la probabilite de combustion
+                                    Proba_Case = (this.Grille_Terrain[Position_X][Position_Y].getHumidite()/100.0f)*(Repartition[b][a]/100.0f)*100.0f; //Calcul de la probabilite de combustion
                                 }
                             }catch(ArrayIndexOutOfBoundsException ex){ //Si les coordonnées de la case indiquent qu'elle est à l'extérieur du terrain alors on retourne une erreur et on continue
                                 System.out.println("Erreur d'indice");
-                                //throw ex;
+                            }finally{
                             }
-                            Condamne = getBooleenRandomDouble(Proba_Case); //On teste si la case va être condamné
-                            if(Condamne = true){
-                                this.Grille_Terrain[Position_X][Position_Y].setCondamne(true); // On condamne la case définitivement
+                            Condamne = getBooleenRandomDouble(Proba_Case); //On teste si la case va être condamnée
+                            if(Condamne == true){
+                                try{
+                                    this.Grille_Terrain[Position_X][Position_Y].setCondamne(true); // On condamne la case définitivement
+                                }catch(ArrayIndexOutOfBoundsException ex){
+                                    System.out.println("Erreur d'indice");
+                                }finally{
+                                }
                             }
-                        }         
+                        }
+                        Position_Y = j-4;
                     }
                 
-                if(this.Grille_Terrain[i][j].getBrulure().equalsIgnoreCase("BC")){ //On verifie si la case est en état : brulé chaud
+                if(this.Grille_Terrain[i][j].getBrulure().equalsIgnoreCase("C")){ //On verifie si la case est en état : brulé chaud
                     for(int a=0;a<Repartition.length;a++){  //On parcourt la grille de Repartion pour avoir les probabilités de combustion d'une case
                         Position_X++;
                         for(int b=0;b<Repartition[0].length;b++){
@@ -166,15 +174,18 @@ public class Terrain {
                             double Proba_Case = 0;
                             try{
                                 if(this.Grille_Terrain[Position_X][Position_Y].getVegetation() == true && this.Grille_Terrain[Position_X][Position_Y].getCondamne() == false){
-                                    Proba_Case = 0.5*(1+2*Vent_Force)*(this.Grille_Terrain[Position_X][Position_Y].getHumidite()/100)*(Repartition[a][b]/100); //Calcul de la probabilite de combustion
+                                    Proba_Case = 0.5*(1+2*Vent_Force)*(this.Grille_Terrain[Position_X][Position_Y].getHumidite()/100.0f)*(Repartition[b][a]/100.0f); //Calcul de la probabilite de combustion
                                 }
                             }catch(ArrayIndexOutOfBoundsException ex){//Si les coordonnées de la case indiquent qu'elle est à l'extérieur du terrain alors on retourne une erreur et on continue
                                 System.out.println("Erreur d'indice");
                                 throw ex;
                             }
                             Condamne = getBooleenRandomDouble(Proba_Case); //On teste si la case va être condamné
-                            if(Condamne = true){
-                                this.Grille_Terrain[Position_X][Position_Y].setCondamne(true);
+                            try{
+                                this.Grille_Terrain[Position_X][Position_Y].setCondamne(true); // On condamne la case définitivement
+                            }catch(ArrayIndexOutOfBoundsException ex){
+                                System.out.println("Erreur d'indice");
+                            }finally{
                             }
                         }         
                     }
@@ -220,25 +231,30 @@ public class Terrain {
         for (int i = 0;i<this.Grille_Terrain.length;i++){ //On parcourt la grille du terrain
             for (int j = 0;j<this.Grille_Terrain.length;j++){
                 
-                if(this.Grille_Terrain[i][j].getCondamne() == true && this.Grille_Terrain[i][j].getBrulure() == ""){ //Si la case est condamné alors on la passe en état enflammé
+                if(this.Grille_Terrain[i][j].getBrulure() == "" && this.Grille_Terrain[i][j].getCondamne() == true){ //Si la case est condamné alors on la passe en état enflammé
                     this.Grille_Terrain[i][j].setCombustion(this.Grille_Terrain[i][j].getCombustion()+1);
                     this.Grille_Terrain[i][j].setVegetation(false);
                     this.Grille_Terrain[i][j].setBrulure("A");
                 }
                 
-                else if(this.Grille_Terrain[i][j].getBrulure() == "A" && this.Grille_Terrain[i][j].getCombustion() >= 1 && this.Grille_Terrain[i][j].getCombustion() <= 2){ //Si la case est enflammé alors on la passe en état brûlé chaud
+                else if(this.Grille_Terrain[i][j].getBrulure() == "A" && this.Grille_Terrain[i][j].getCombustion() == 1){ //Si la case est enflammé alors on la passe en état brûlé chaud
                     this.Grille_Terrain[i][j].setCombustion(this.Grille_Terrain[i][j].getCombustion()+1);
                 }
                 
-                else if(this.Grille_Terrain[i][j].getBrulure() == "A" && this.Grille_Terrain[i][j].getCombustion() == 3){ //Au bout de deux itérations, une case enflammée devient une case brûlé chaud
+                else if(this.Grille_Terrain[i][j].getBrulure() == "A" && this.Grille_Terrain[i][j].getCombustion() == 2){ //Si la case est enflammé alors on la passe en état brûlé chaud
                     this.Grille_Terrain[i][j].setCombustion(this.Grille_Terrain[i][j].getCombustion()+1);
-                    this.Grille_Terrain[i][j].setBrulure("BC");
+                    this.Grille_Terrain[i][j].setBrulure("C");
                 }
                 
-                else if(this.Grille_Terrain[i][j].getBrulure() == "BC" && this.Grille_Terrain[i][j].getCombustion() > 3){ //Une case en état brûlé chaud a 40% de chance de devenir une case en état brûlé froid
+                else if(this.Grille_Terrain[i][j].getBrulure() == "C" && this.Grille_Terrain[i][j].getCombustion() == 3){ //Au bout de deux itérations, une case enflammée devient une case brûlé chaud
+                    this.Grille_Terrain[i][j].setCombustion(this.Grille_Terrain[i][j].getCombustion()+1);
+                }
+                
+                else if(this.Grille_Terrain[i][j].getBrulure() == "C" && this.Grille_Terrain[i][j].getCombustion() > 3){ //Une case en état brûlé chaud a 40% de chance de devenir une case en état brûlé froid
+                    this.Grille_Terrain[i][j].setCombustion(this.Grille_Terrain[i][j].getCombustion()+1);
                     Boolean Refroidit = getBooleenRandom(40);
                     if(Refroidit == true){
-                        this.Grille_Terrain[i][j].setBrulure("BF");
+                        this.Grille_Terrain[i][j].setBrulure("F");
                     }
                 }
             }
