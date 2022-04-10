@@ -118,7 +118,7 @@ public class Wild_Fire_Simu {
         terter3.Affec_Vege(Densite);*/
         
         Terrain Foret = new Terrain(0,"Touffue");
-        Foret.CreaTableau(3,10,10);
+        Foret.CreaTableau(30,20,20);
         int Densite = Foret.Conversion(Foret.getDensite());
         Foret.Affec_Vege(Densite);
         
@@ -140,8 +140,6 @@ public class Wild_Fire_Simu {
         }
         System.out.println("");
         
-        
-        /*
         for(int i=0;i<Foret.getGrille().length;i++){
                 for(int j=0;j<Foret.getGrille()[0].length;j++){
                     if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getCombustion() == 0){
@@ -161,7 +159,7 @@ public class Wild_Fire_Simu {
         Vent wind = new Vent("nord",3);
         wind.Repartion_Vent();
         
-        for(int a=0;a<4;a++){
+        for(int a=0;a<7;a++){
             Foret.Propa_Feu(wind.getRepartition(),wind.getForce());
             System.out.println("Iteration " + a);
             for(int i=0;i<Foret.getGrille().length;i++){
@@ -185,6 +183,6 @@ public class Wild_Fire_Simu {
                 Thread.currentThread().interrupt();
             }
         }  
-        */
+        
     }
 }
