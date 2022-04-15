@@ -19,6 +19,8 @@ public class Wild_Fire_Simu {
     
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_PURPLE = "\u001B[35m";
@@ -122,32 +124,16 @@ public class Wild_Fire_Simu {
         terter3.Affec_Vege(Densite);*/
         
         Terrain Foret = new Terrain(0,"Touffue");
-        Foret.CreaTableau(30,10,10);
+        Foret.CreaTableau(50,100,100);
         int Densite = Foret.Conversion(Foret.getDensite());
         Foret.Affec_Vege(Densite);
         
-        Foret.Depart_Feu(2);
-        
-        for(int i=0;i<Foret.getGrille().length;i++){
-                for(int j=0;j<Foret.getGrille()[0].length;j++){
-                    if(Foret.getGrille()[i][j].getVegetation() == true && Foret.getGrille()[i][j].getCombustion() == 0){
-                        System.out.print(ANSI_GREEN + "^" + " " + ANSI_RESET);
-                    }
-                    else if(Foret.getGrille()[i][j].getVegetation() == true && Foret.getGrille()[i][j].getCombustion() == 0){
-                        System.out.print("^" + " ");
-                    }
-                    else{
-                        System.out.print(Foret.getGrille()[i][j].getBrulure() + " ");
-                    }
-                }
-            System.out.println("|");
-        }
-        System.out.println("");
+        Foret.Depart_Feu(1);
         
         for(int i=0;i<Foret.getGrille().length;i++){
                 for(int j=0;j<Foret.getGrille()[0].length;j++){
                     if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "" && Foret.getGrille()[i][j].getCombustion() == 0){
-                        System.out.print(ANSI_PURPLE + "X" + " " + ANSI_RESET);
+                        System.out.print(ANSI_CYAN + "X" + " " + ANSI_RESET);
                     }
                     else if(Foret.getGrille()[i][j].getVegetation() == true && Foret.getGrille()[i][j].getCombustion() == 0){
                         System.out.print(ANSI_GREEN + "^" + " " + ANSI_RESET);
@@ -167,18 +153,25 @@ public class Wild_Fire_Simu {
                 }
                 System.out.println("|");
             }
-            System.out.println("");
+        System.out.println("");
         
-        Vent wind = new Vent("est",3);
+        Vent wind = new Vent("nord",3);
         wind.Repartion_Vent();
         
-        for(int a=0;a<15;a++){
+        for(int i=0;i<wind.getRepartition().length;i++){
+            for(int j=0;j<wind.getRepartition()[0].length;j++){
+                System.out.printf("'%2s' ", Integer.toString(wind.getRepartition()[i][j]));  
+            }
+            System.out.println("|");
+        }
+        
+        for(int a=0;a<60;a++){
             Foret.Propa_Feu(wind.getRepartition(),wind.getForce());
             System.out.println("Iteration " + a);
             for(int i=0;i<Foret.getGrille().length;i++){
                 for(int j=0;j<Foret.getGrille()[0].length;j++){
                     if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "" && Foret.getGrille()[i][j].getCombustion() == 0){
-                        System.out.print(ANSI_PURPLE + "X" + " " + ANSI_RESET);
+                        System.out.print(ANSI_CYAN + "X" + " " + ANSI_RESET);
                     }
                     else if(Foret.getGrille()[i][j].getVegetation() == true && Foret.getGrille()[i][j].getCombustion() == 0){
                         System.out.print(ANSI_GREEN + "^" + " " + ANSI_RESET);
