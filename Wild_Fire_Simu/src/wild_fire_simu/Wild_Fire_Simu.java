@@ -17,6 +17,13 @@ public class Wild_Fire_Simu {
      * @param args the command line arguments
      */
     
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_WHITE = "\u001B[37m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_RESET = "\u001B[0m";
+    
     public static void main(String[] args) {
         
         // test methode Conversion
@@ -115,16 +122,16 @@ public class Wild_Fire_Simu {
         terter3.Affec_Vege(Densite);*/
         
         Terrain Foret = new Terrain(0,"Touffue");
-        Foret.CreaTableau(3,10,10);
+        Foret.CreaTableau(30,10,10);
         int Densite = Foret.Conversion(Foret.getDensite());
         Foret.Affec_Vege(Densite);
         
-        Foret.Depart_Feu(1);
+        Foret.Depart_Feu(2);
         
         for(int i=0;i<Foret.getGrille().length;i++){
                 for(int j=0;j<Foret.getGrille()[0].length;j++){
-                    if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getCombustion() == 0){
-                        System.out.print("X" + " ");
+                    if(Foret.getGrille()[i][j].getVegetation() == true && Foret.getGrille()[i][j].getCombustion() == 0){
+                        System.out.print(ANSI_GREEN + "^" + " " + ANSI_RESET);
                     }
                     else if(Foret.getGrille()[i][j].getVegetation() == true && Foret.getGrille()[i][j].getCombustion() == 0){
                         System.out.print("^" + " ");
@@ -133,37 +140,71 @@ public class Wild_Fire_Simu {
                         System.out.print(Foret.getGrille()[i][j].getBrulure() + " ");
                     }
                 }
+            System.out.println("|");
+        }
+        System.out.println("");
+        
+        for(int i=0;i<Foret.getGrille().length;i++){
+                for(int j=0;j<Foret.getGrille()[0].length;j++){
+                    if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "" && Foret.getGrille()[i][j].getCombustion() == 0){
+                        System.out.print(ANSI_PURPLE + "X" + " " + ANSI_RESET);
+                    }
+                    else if(Foret.getGrille()[i][j].getVegetation() == true && Foret.getGrille()[i][j].getCombustion() == 0){
+                        System.out.print(ANSI_GREEN + "^" + " " + ANSI_RESET);
+                    }
+                    else{
+                        if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "A"){
+                            System.out.print(ANSI_RED);
+                        }
+                        if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "C"){
+                            System.out.print(ANSI_YELLOW);
+                        }
+                        if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "F"){
+                            System.out.print(ANSI_WHITE);
+                        }
+                        System.out.print(Foret.getGrille()[i][j].getBrulure() + " " + ANSI_RESET);
+                    }
+                }
                 System.out.println("|");
             }
             System.out.println("");
         
-        Vent wind = new Vent("nord",3);
+        Vent wind = new Vent("est",3);
         wind.Repartion_Vent();
         
-        for(int a=0;a<20;a++){
+        for(int a=0;a<15;a++){
             Foret.Propa_Feu(wind.getRepartition(),wind.getForce());
             System.out.println("Iteration " + a);
             for(int i=0;i<Foret.getGrille().length;i++){
                 for(int j=0;j<Foret.getGrille()[0].length;j++){
-                    if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getCombustion() == 0){
-                        System.out.print("X" + " ");
+                    if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "" && Foret.getGrille()[i][j].getCombustion() == 0){
+                        System.out.print(ANSI_PURPLE + "X" + " " + ANSI_RESET);
                     }
                     else if(Foret.getGrille()[i][j].getVegetation() == true && Foret.getGrille()[i][j].getCombustion() == 0){
-                        System.out.print("^" + " ");
+                        System.out.print(ANSI_GREEN + "^" + " " + ANSI_RESET);
                     }
                     else{
-                        System.out.print(Foret.getGrille()[i][j].getBrulure() + " ");
+                        if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "A"){
+                            System.out.print(ANSI_RED);
+                        }
+                        if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "C"){
+                            System.out.print(ANSI_YELLOW);
+                        }
+                        if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "F"){
+                            System.out.print(ANSI_WHITE);
+                        }
+                        System.out.print(Foret.getGrille()[i][j].getBrulure() + " " + ANSI_RESET);
                     }
                 }
                 System.out.println("|");
             }
             System.out.println("");
             try{
-                 Thread.sleep(500);
+                 Thread.sleep(90);
             }catch(InterruptedException ex){
                 Thread.currentThread().interrupt();
             }
         }  
-       
+        
     }
 }
