@@ -42,20 +42,20 @@ public class Wild_Fire_Simu {
         int largeur;
         Scanner sc = new Scanner(System.in);
         
-         Terrain terrain1=new Terrain(0,"Continue");
-         System.out.println("entrez une longueur");
-         longueur=sc.nextInt();
-         System.out.println("entrez une largeur"); // attention ordre longueur puis largeur ou l'inverse ?
-         largeur=sc.nextInt();
-         
-         terrain1.CreaTableau(10, longueur, largeur);
-         for (int i=0;i<longueur;i++){ // attention avec l'ordre longueur largeur je suis pas sur de mon coup
-            for(int j=0;j<largeur;j++){
-         System.out.println(terrain1.Grille_Terrain[i][j].Humidite_Case);
+        Terrain terrain1=new Terrain(0,"Continue");
+        System.out.println("entrez une longueur");
+        longueur=sc.nextInt();
+        System.out.println("entrez une largeur"); // attention ordre longueur puis largeur ou l'inverse ?
+        largeur=sc.nextInt();
+
+        terrain1.CreaTableau(10, longueur, largeur);
+        for (int i=0;i<longueur;i++){ // attention avec l'ordre longueur largeur je suis pas sur de mon coup
+           for(int j=0;j<largeur;j++){
+               System.out.println(terrain1.Grille_Terrain[i][j].Humidite_Case);
             }
-         }
-         //test ok (à vérifier pcq méthode modifiée entre temps)
-         */
+        }
+        //test ok (à vérifier pcq méthode modifiée entre temps)
+        */
         
         
         /*
@@ -108,7 +108,7 @@ public class Wild_Fire_Simu {
          terrain1.Depart_Feu(1);
          for (int i=0;i<longueur;i++){ // attention avec l'ordre longueur largeur je suis pas sur de mon coup
             for(int j=0;j<largeur;j++){
-         System.out.print(" "+terrain1.Grille_Terrain[i][j].Combustion_Case);
+                System.out.print(" "+terrain1.Grille_Terrain[i][j].Combustion_Case);
          }
             System.out.println("\n");
          }
