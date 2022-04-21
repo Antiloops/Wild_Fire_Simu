@@ -56,7 +56,8 @@ public class Terrain {
                 this.Grille_Terrain = new Case[longueur][largeur];      //Initialisation des dimensions du tableau
                 for(int i=0;i<longueur;i++){ 
                     for(int j=0;j<largeur;j++){
-                        this.Grille_Terrain[i][j].setHumidite(humidite);    //Affectation de l'humidite de chaque case
+                        Case temp = new Case(humidite);
+                        this.Grille_Terrain[i][j] = temp;    //Affectation de l'humidite de chaque case
                     }
                 }
             }catch(ArrayIndexOutOfBoundsException ex){      //Si la boucle for depasse le nombre de case de la grille, on envoit un message d'erreur
@@ -129,8 +130,8 @@ public class Terrain {
     //Methode initialisant la/les  position du feu 
     public void Depart_Feu(int nb_depart){      
         Random random = new Random();   //Creation d'un objet de la classe Random
-        int longueur = this.Grille_Terrain.length;;
-        int largeur = this.Grille_Terrain[0].length;;
+        int longueur = this.Grille_Terrain.length;
+        int largeur = this.Grille_Terrain[0].length;
         for(int i=0;i<nb_depart;i++){
             int x=random.nextInt(longueur); //On tire une valeur de longueur aléatoire 
             int y=random.nextInt(largeur);  //On tire une valeur de largeur aléatoire 
@@ -242,7 +243,9 @@ public class Terrain {
     //Methode prenant en argument une probabilite et renvoie un reel compris entre -1 et 1
     public float Convertisseur(int proba){ 
         float y;
-        y=(proba*2/100)-1;
+        System.out.println(proba);
+        y=(proba*2.0f/100.0f)-1.0f;
+        System.out.println(y);
         return y;
     }
     

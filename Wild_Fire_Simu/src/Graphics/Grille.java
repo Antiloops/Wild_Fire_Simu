@@ -19,7 +19,7 @@ public class Grille {
     
     public Grille(){
         //Terrain terrain=new Terrain();
-        Fenetre.terrain.CreaTableau(50, 300, 300);
+        Fenetre.terrain.CreaTableau(50, 5000, 5000);
         this.grilleColors=Fenetre.terrain.getGrille();
         
         //this.grilleColors = new Case[300][300];//tab notre vrai tableau , dimension 300x300 a modifier en fonction de la taille de notre tableau

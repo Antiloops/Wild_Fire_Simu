@@ -67,7 +67,7 @@ public class Fenetre extends javax.swing.JFrame {
                 .addComponent(Demarrer)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 295, Short.MAX_VALUE)
+                .addGap(0, 1162, Short.MAX_VALUE)
                 .addComponent(GeneTerrain))
         );
         layout.setVerticalGroup(
@@ -77,7 +77,7 @@ public class Fenetre extends javax.swing.JFrame {
                 .addComponent(Demarrer)
                 .addGap(18, 18, 18)
                 .addComponent(GeneTerrain)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addContainerGap(758, Short.MAX_VALUE))
         );
 
         pack();
@@ -90,10 +90,8 @@ public class Fenetre extends javax.swing.JFrame {
     }//GEN-LAST:event_DemarrerActionPerformed
 
     private void GeneTerrainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GeneTerrainActionPerformed
-        
-        terrain.Affec_Vege(50, 10, 1); // on place la végétation avec une disposition unique
+        terrain.Affec_Vege(50, 60, 2000); // on place la végétation avec une disposition unique
         grPanel.repaint(); // on repaint notre panel pour mettre à jour les couleurs du nouveau panel
-        
     }//GEN-LAST:event_GeneTerrainActionPerformed
 
     /**
