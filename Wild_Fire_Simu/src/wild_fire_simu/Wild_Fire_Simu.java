@@ -121,10 +121,11 @@ public class Wild_Fire_Simu {
         int Densite = terter3.Conversion(terter3.Densite_Terrain);
         terter3.Affec_Vege(Densite);*/
         
-        Terrain Foret = new Terrain(0,"Touffue");
-        Foret.CreaTableau(30,10,10);
-        int Densite = Foret.Conversion(Foret.getDensite());
-        Foret.Affec_Vege(Densite);
+        Terrain Foret = new Terrain(0);
+        
+        Foret.CreaTableau(30,80,80);
+        
+        Foret.Affec_Vege(75, 2, 150);
         
         Foret.Depart_Feu(2);
         
