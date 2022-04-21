@@ -12,7 +12,8 @@ import java.util.Random;
  * @author Louis SAVIGNAC et Mathis LOPEZ
  */
 public class Terrain {
-    
+   //yes 
+             
     private Random random = new Random();
     
     private Case[][] Grille_Terrain; // Grille du terrain // type sera suremment modifié
@@ -55,7 +56,7 @@ public class Terrain {
     public int Conversion(String densite){ // methode permettant de convertir le type de densité en une probabilité expoitable plus tard
         int probabilite=0;
         if("Clairsemee".equalsIgnoreCase(densite)){ // comment ne plus se préoccuper des majuscules ?
-            probabilite= 50;
+            probabilite= 10;
         }else if ("Espacee".equalsIgnoreCase(densite)){
             probabilite= 75;
         }else if("Touffue".equalsIgnoreCase(densite)){

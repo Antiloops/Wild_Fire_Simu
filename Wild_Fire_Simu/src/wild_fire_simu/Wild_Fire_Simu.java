@@ -124,7 +124,7 @@ public class Wild_Fire_Simu {
         terter3.Affec_Vege(Densite);*/
         
         Terrain Foret = new Terrain(0,"Touffue");
-        Foret.CreaTableau(50,100,100);
+        Foret.CreaTableau(50,50,50);
         int Densite = Foret.Conversion(Foret.getDensite());
         Foret.Affec_Vege(Densite);
         
@@ -155,6 +155,7 @@ public class Wild_Fire_Simu {
             }
         System.out.println("");
         
+        /*
         Vent wind = new Vent("nord",3);
         wind.Repartion_Vent();
         
@@ -198,6 +199,6 @@ public class Wild_Fire_Simu {
                 Thread.currentThread().interrupt();
             }
         }  
-        
+        */
     }
 }
