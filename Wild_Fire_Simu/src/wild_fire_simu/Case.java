@@ -23,7 +23,7 @@ public class Case {
         this.Humidite_Case = Humidite_Case;
     }
     
-    //Getter -> Méthodes qui retourne les attributs de la case : la vegatation, la niveau de combustion ou le risque
+    //Getter -> Methodes qui retourne les attributs de la case : la vegatation, la niveau de combustion ou le risque
     public Boolean getVegetation(){
         return this.Vegetation_Case;
     }
@@ -44,7 +44,7 @@ public class Case {
         return this.Condamne_Case;
     }
     
-    //Setter -> Méthodes qui modifie les attributs de la case par un argument en entrée pour : la vegetation, la combustion ou le risque
+    //Setter -> Methodes qui modifie les attributs de la case par un argument en entree pour : la vegetation, la combustion ou le risque
     public void setVegetation(Boolean Vegetation_Case){
         this.Vegetation_Case = Vegetation_Case;
     }

@@ -22,7 +22,7 @@ public class Vent {
         this.Force_Vent = force;
     }
     
-    //Getter -> Méthodes qui retourne les attributs de la case : le sens du vent, la force et le tableau de répartition du vent
+    //Getter -> Methodes qui retourne les attributs de la case : le sens du vent, la force et le tableau de repartition du vent
     public String getSens(){
         return this.Sens_Vent;
     }
@@ -35,7 +35,7 @@ public class Vent {
         return this.Repartition_Vent;
     }
     
-    //Setter -> Méthodes qui modifie les attributs de la case par un argument en entrée pour : le sens du vent, la force et le tableau de répartition du vent
+    //Setter -> Methodes qui modifie les attributs de la case par un argument en entree pour : le sens du vent, la force et le tableau de repartition du vent
     public void setSens(String Sens_Vent){
         this.Sens_Vent = Sens_Vent;
     }
@@ -49,31 +49,31 @@ public class Vent {
     }
     
     
-    public void Rotation_Matrice_AntiHoraire(int[][] OldRepartition){ //Méthode permettant de tourner un tableau de taille nxn dans le sens antihoraire 
-        int[][] NewRepartition = new int[7][7]; //Création d'un tableau temporaire
+    public void Rotation_Matrice_AntiHoraire(int[][] OldRepartition){ //Methode permettant de tourner un tableau de taille nxn dans le sens antihoraire 
+        int[][] NewRepartition = new int[7][7]; //Creation d'un tableau temporaire
         for(int i=0;i<NewRepartition.length;i++){   //Parcours du tableau 
             for(int j=0;j<NewRepartition[0].length;j++){
-                NewRepartition[j][6-i] = OldRepartition[i][j];  //Affectation des probabilités dans la nouvelle matrice.
+                NewRepartition[j][6-i] = OldRepartition[i][j];  //Affectation des probabilites dans la nouvelle matrice.
             }
         }
         this.Repartition_Vent = NewRepartition; 
     }
     
-    public void Rotation_Matrice_Horaire(int[][] OldRepartition){   //Méthode permettant de tourner une matrice de taille nxn dans le sens horaire
-        int[][] NewRepartition = new int[7][7]; //Création d'un tableau temporaire
+    public void Rotation_Matrice_Horaire(int[][] OldRepartition){   //Methode permettant de tourner une matrice de taille nxn dans le sens horaire
+        int[][] NewRepartition = new int[7][7]; //Creation d'un tableau temporaire
         for(int i=0;i<NewRepartition.length;i++){   //Parcours du tableau
             for(int j=0;j<NewRepartition[0].length;j++){
-                NewRepartition[6-j][i] = OldRepartition[i][j];  //Affectation des probabilités dans la nouvelle matrice.
+                NewRepartition[6-j][i] = OldRepartition[i][j];  //Affectation des probabilites dans la nouvelle matrice.
             }
         }
         this.Repartition_Vent = NewRepartition;
     }
     
-    public void Rotation_Matrice_180(int[][] OldRepartition){   //Méthode permettant de tourner un tableau de taille nxn dans de 180 degrés
-        int[][] NewRepartition = new int[7][7]; //Création d'un tableau temporaire
+    public void Rotation_Matrice_180(int[][] OldRepartition){   //Methode permettant de tourner un tableau de taille nxn dans de 180 degres
+        int[][] NewRepartition = new int[7][7]; //Creation d'un tableau temporaire
         for(int i=0;i<NewRepartition.length;i++){   //Parcours du tableau
             for(int j=0;j<NewRepartition[0].length;j++){
-                NewRepartition[j][6-i] = OldRepartition[j][i];  //Affectation des probabilités dans la nouvelle matrice.
+                NewRepartition[j][6-i] = OldRepartition[j][i];  //Affectation des probabilites dans la nouvelle matrice.
             }
         }
         this.Repartition_Vent = NewRepartition;
