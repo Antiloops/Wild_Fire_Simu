@@ -1,5 +1,18 @@
 # Wild_Fire_Simu
 
+Version 7.0
+- Dans la classe Terrain :
+   - Dans la méthode Propa_Feu() : 
+      - Ajout d'un ligne : "Position_Y = j-4;" -> Correction de la mauvaise propagation du feu
+- Dans la classe Vent : 
+   - Ajout des méthodes :
+      - Rotation_Matrice_AntiHoraire
+      - Rotation_Matrice_Horaire
+      - Rotation_Matrice_180
+   - Dans la classe Repartition_Vent :
+      - Correction des coordonnées des Repartition de vent 
+      - Prise en charge du system de rotation de matrice pour les directions du vent
+
 Version 6.1
 - Dans la classe Terrain :
    - Dans la méthode Propa_Feu()  :
