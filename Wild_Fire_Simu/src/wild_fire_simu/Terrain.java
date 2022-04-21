@@ -20,9 +20,8 @@ public class Terrain {
     private String Densite_Terrain; //Dentsité de vegetation du terrain
     
     
-    public Terrain(int Temps_Terrain,String Densite_Terrain){ //Constructeur
+    public Terrain(int Temps_Terrain){ //Constructeur
         this.Temps_Terrain = Temps_Terrain;
-        this.Densite_Terrain = Densite_Terrain;
     }
     
     //Getter -> Méthodes qui retourne les attributs de la case : la vegatation, la niveau de combustion ou le risque
@@ -51,22 +50,6 @@ public class Terrain {
         this.Densite_Terrain = Densite_Terrain;
     }
     
-    // methode permettant de convertir le type de densité en une probabilité expoitable plus tard
-    public int Conversion(String densite){ // methode permettant de convertir le type de densité en une probabilité expoitable plus tard
-        int probabilite=0;
-        if("Clairsemee".equalsIgnoreCase(densite)){ // comment ne plus se préoccuper des majuscules ?
-            probabilite= 50;
-        }else if ("Espacee".equalsIgnoreCase(densite)){
-            probabilite= 75;
-        }else if("Touffue".equalsIgnoreCase(densite)){
-            probabilite=90;
-        }else if("Continue".equalsIgnoreCase(densite)){
-            probabilite= 100;
-        }
-        return probabilite;
-    }
-    
-    
     // cette méthode initialise un tableau de dimension longueur x largeur dans lequel on fixe l'humidité de chaque case
     public void CreaTableau(int humidite, int longueur, int largeur){ 
         Case[][] tableau;
@@ -92,16 +75,49 @@ public class Terrain {
         }
     }
     
-    //Methode qui permet d'initialiser la végétation du terrain
-    public void Affec_Vege(int Proba){
+    //Methode qui permet d'initialiser la végétation du terrain sans graine de génération
+    public void Affec_Vege(int Repartition, int feature_size){
+        float Noise_Repartition = Convertisseur(Repartition);
         boolean AffectCorrect = false;      //Variable de vérification de la bonne mise en place du programme
-        try{
+        OpenSimplexNoise noise = new OpenSimplexNoise();     //Création d'un objet de la classe OpenSimplexNoise
+        try{    //
             AffectCorrect = true;
             for(int i=0;i<this.Grille_Terrain.length;i++){      //Parcours de la grille du terrain 
                 for(int j=0;j<this.Grille_Terrain[0].length;j++){
-                    boolean Vege = getBooleenRandom(Proba);     //On regarde si la case va être végétaliser (en fonction de la proba
-                    Case Temp = this.Grille_Terrain[i][j];
-                    Temp.setVegetation(Vege);
+                    double value = noise.eval(i / feature_size, j / feature_size);  //On utilise la méthode eval de OpenSimplexNoise pour retourner une valeur comprise entre -1 et 1 
+                    if(value > Noise_Repartition){
+                        this.Grille_Terrain[i][j].setVegetation(false);
+                    }
+                    if(value <= Noise_Repartition){
+                        this.Grille_Terrain[i][j].setVegetation(true);
+                    }
+                }
+            }
+        }catch(ArrayIndexOutOfBoundsException ex){       //Si la boucle for dépasse le nombre de case de la grille, on envoit un message d'erreur
+            AffectCorrect = false;
+            System.out.println(" Affec_Vege() -> Un problème d'indice est survenu");
+            throw ex;
+        }if(AffectCorrect){
+            System.out.println(" Affec_Vege() -> La Vegetation a bien été Affectée à la grille");
+        }
+    }
+    
+    //Methode qui permet d'initialiser la végétation du terrain avec graine de génération
+    public void Affec_Vege(int Repartition, int feature_size, int Seed){
+        float Noise_Repartition = Convertisseur(Repartition);
+        boolean AffectCorrect = false;      //Variable de vérification de la bonne mise en place du programme
+        OpenSimplexNoise noise = new OpenSimplexNoise(Seed);     //Création d'un objet de la classe OpenSimplexNoise
+        try{    //
+            AffectCorrect = true;
+            for(int i=0;i<this.Grille_Terrain.length;i++){      //Parcours de la grille du terrain 
+                for(int j=0;j<this.Grille_Terrain[0].length;j++){
+                    double value = noise.eval(i / feature_size, j / feature_size);
+                    if(value > Noise_Repartition){
+                        this.Grille_Terrain[i][j].setVegetation(false);
+                    }
+                    if(value <= Noise_Repartition){
+                        this.Grille_Terrain[i][j].setVegetation(true);
+                    }
                 }
             }
         }catch(ArrayIndexOutOfBoundsException ex){       //Si la boucle for dépasse le nombre de case de la grille, on envoit un message d'erreur
@@ -195,7 +211,8 @@ public class Terrain {
                                 }finally{
                                 }
                             }
-                        }         
+                        }
+                        Position_Y = j-4;
                     }
                 }
             }
@@ -229,6 +246,12 @@ public class Terrain {
         else{
             return true; 
         }
+    }
+    
+    public float Convertisseur(int proba){ // cette méthode prend en argument une probabilité et renvoie un réel compris entre -1 et 1
+        float y;
+        y=(proba*2/100)-1;
+        return y;
     }
     
     // methode qui permet de transformer les cases condamnées en cases qui brûlent, de plus les cases déjà en feu mais pas encore réduit en cendre voient leur état de combustion augmenter de 1
