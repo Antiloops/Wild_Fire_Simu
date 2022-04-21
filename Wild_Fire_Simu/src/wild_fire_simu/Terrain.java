@@ -17,12 +17,12 @@ public class Terrain {
     private Random random = new Random();
     
     private Case[][] Grille_Terrain; // Grille du terrain // type sera suremment modifié
-    private int Temps_Terrain;  //Ittération de la partie
+    //private int Temps_Terrain;  //Ittération de la partie
     private String Densite_Terrain; //Dentsité de vegetation du terrain
     
     
-    public Terrain(int Temps_Terrain){ //Constructeur
-        this.Temps_Terrain = Temps_Terrain;
+    public Terrain(){ //Constructeur
+        
     }
     
     //Getter -> Méthodes qui retourne les attributs de la case : la vegatation, la niveau de combustion ou le risque
@@ -30,9 +30,7 @@ public class Terrain {
         return this.Grille_Terrain;
     }
     
-    public int getTemps(){
-        return this.Temps_Terrain;
-    }
+    
     
     public String getDensite(){
         return this.Densite_Terrain;
@@ -43,9 +41,7 @@ public class Terrain {
         this.Grille_Terrain = Grille_Terrain;
     }
     
-    public void setCombustion(int Temps_Terrain){
-        this.Temps_Terrain = Temps_Terrain;
-    }
+    
     
     public void setDensite(String Densite_Terrain){
         this.Densite_Terrain = Densite_Terrain;
