@@ -147,30 +147,30 @@ public class Terrain {
     
     //Methode permettant de realiser la propagation du feu
     public void Propa_Feu(int[][] Repartition,int Vent_Force){
-        for(int i=0;i<this.Grille_Terrain.length;i++){ //On parcourt la grille du terrain
+        for(int i=0;i<this.Grille_Terrain.length;i++){  //On parcourt la grille du terrain
             for(int j=0;j<this.Grille_Terrain[0].length;j++){
-                boolean Condamne; //Condition de propagation du feu
-                int Position_X = i; //Coordonnees de la case sur la grille correspondant à la premiere de la grille de propagation
+                boolean Condamne;   //Condition de propagation du feu
+                int Position_X = i;     //Coordonnees de la case sur la grille correspondant à la premiere de la grille de propagation
                 int Position_Y = j;
-                if(this.Grille_Terrain[i][j].getBrulure().equalsIgnoreCase("A")){ //On verifie si la case est en etat : enflamme 
+                if(this.Grille_Terrain[i][j].getBrulure().equalsIgnoreCase("A")){   //On verifie si la case est en etat : enflamme 
                     Position_X = Position_X-4;
                     Position_Y = Position_Y-4;
-                    for(int a=0;a<Repartition.length;a++){  //On parcourt la grille de Repartion pour avoir les probabilites de combustion d'une case
-                        Position_X++; //On parcourt en même temps la grille du terrain pour faire le tirage de la condamnation d'une case
+                    for(int a=0;a<Repartition.length;a++){      //On parcourt la grille de Repartion pour avoir les probabilites de combustion d'une case
+                        Position_X++;   //On parcourt en même temps la grille du terrain pour faire le tirage de la condamnation d'une case
                         for(int b=0;b<Repartition[0].length;b++){
                             Position_Y++;
                             float Proba_Case = 0;
                             try{
-                                if(this.Grille_Terrain[Position_X][Position_Y].getVegetation() == true && this.Grille_Terrain[Position_X][Position_Y].getCondamne() == false){ //On effectue le tirage uniquement sur les cases avec forêt non condamnee
+                                if(this.Grille_Terrain[Position_X][Position_Y].getVegetation() == true && this.Grille_Terrain[Position_X][Position_Y].getCondamne() == false){  //On effectue le tirage uniquement sur les cases avec forêt non condamnee
                                     Proba_Case = (this.Grille_Terrain[Position_X][Position_Y].getHumidite()/100.0f)*(Repartition[a][b]/100.0f); //Calcul de la probabilite de combustion
                                 }
-                            }catch(ArrayIndexOutOfBoundsException ex){ //Si les coordonnees de la case indiquent qu'elle est à l'exterieur du terrain alors on retourne une erreur et on continue
+                            }catch(ArrayIndexOutOfBoundsException ex){  //Si les coordonnees de la case indiquent qu'elle est à l'exterieur du terrain alors on retourne une erreur et on continue
                             }finally{
                             }
-                            Condamne = getBooleenRandomDouble(Proba_Case); //On teste si la case va être condamnee
+                            Condamne = getBooleenRandomDouble(Proba_Case);  //On teste si la case va être condamnee
                             if(Condamne == true){
                                 try{
-                                    this.Grille_Terrain[Position_X][Position_Y].setCondamne(true); // On condamne la case definitivement
+                                    this.Grille_Terrain[Position_X][Position_Y].setCondamne(true);  // On condamne la case definitivement
                                 }catch(ArrayIndexOutOfBoundsException ex){
                                 }finally{
                                 }
@@ -190,7 +190,7 @@ public class Terrain {
                             double Proba_Case = 0;
                             try{
                                 if(this.Grille_Terrain[Position_X][Position_Y].getVegetation() == true && this.Grille_Terrain[Position_X][Position_Y].getCondamne() == false){
-                                    Proba_Case = 0.08*(1+2*Vent_Force)*(this.Grille_Terrain[Position_X][Position_Y].getHumidite()/100.0f)*(Repartition[a][b]/100.0f); //Calcul de la probabilite de combustion
+                                    Proba_Case = 0.3*(1+2*Vent_Force)*(this.Grille_Terrain[Position_X][Position_Y].getHumidite()/100.0f)*(Repartition[a][b]/100.0f); //Calcul de la probabilite de combustion
                                 }
                             }catch(ArrayIndexOutOfBoundsException ex){//Si les coordonnees de la case indiquent qu'elle est à l'exterieur du terrain alors on retourne une erreur et on continue
                             }finally{
@@ -212,31 +212,43 @@ public class Terrain {
         Iteration();
     }
     
+    
     //Methode renvoyant une booleen aleatoire en fonction d'un pourcentage mis en argument 
     public boolean getBooleenRandom(int Proba){
-        int a;
-        Random t = new Random();
-        // random integers in [0, 100]
-        a=t.nextInt(100);
-        if (a>Proba){
-            return false;
+        if(Proba != 0.0){
+            int a;
+            Random t = new Random();
+            // random integers in [0, 100]
+            a=t.nextInt(100);
+            if (a>Proba){
+                return false;
+            }
+            else{
+                return true; 
+            }
         }
         else{
-            return true; 
+            return false;
         }
     }
     
+    
     //Methode renvoyant une booleen aleatoire en fonction d'un pourcentage mis en argument !!VERSION FLOAT!!
     public boolean getBooleenRandomDouble(double Proba){
-        int a;
-        Random t = new Random();
-        // random integers in [0, 100]
-        a=t.nextInt(100);
-        if (a>Proba*100){
-            return false;
+        if(Proba != 0.0){
+            int a;
+            Random t = new Random();
+            // random integers in [0, 100]
+            a=t.nextInt(100);
+            if (a>Proba*100){
+                return false;
+            }
+            else{
+                return true; 
+            }
         }
         else{
-            return true; 
+            return false;
         }
     }
     
