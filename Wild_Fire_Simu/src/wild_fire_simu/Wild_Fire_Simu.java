@@ -127,14 +127,14 @@ public class Wild_Fire_Simu {
         
         Foret.CreaTableau(30,80,80);
         
-        Foret.Affec_Vege(75, 2, 150);
+        Foret.Affec_Vege(75, 20, 150);
         
         Foret.Depart_Feu(1);
         
         for(int i=0;i<Foret.getGrille().length;i++){
                 for(int j=0;j<Foret.getGrille()[0].length;j++){
                     if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "" && Foret.getGrille()[i][j].getCombustion() == 0){
-                        System.out.print(ANSI_CYAN + "X" + " " + ANSI_RESET);
+                        System.out.print(ANSI_BLUE + "X" + " " + ANSI_RESET);
                     }
                     else if(Foret.getGrille()[i][j].getVegetation() == true && Foret.getGrille()[i][j].getCombustion() == 0){
                         System.out.print(ANSI_GREEN + "^" + " " + ANSI_RESET);

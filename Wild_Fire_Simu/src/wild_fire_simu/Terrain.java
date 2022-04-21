@@ -88,6 +88,7 @@ public class Terrain {
                     double value = noise.eval(i / feature_size, j / feature_size);  //On utilise la méthode eval de OpenSimplexNoise pour retourner une valeur comprise entre -1 et 1 
                     if(value > Noise_Repartition){
                         this.Grille_Terrain[i][j].setVegetation(false);
+                        this.Grille_Terrain[i][j].setBrulure("X");
                     }
                     if(value <= Noise_Repartition){
                         this.Grille_Terrain[i][j].setVegetation(true);
@@ -115,9 +116,11 @@ public class Terrain {
                     double value = noise.eval(i / feature_size, j / feature_size);
                     if(value > Noise_Repartition){
                         this.Grille_Terrain[i][j].setVegetation(false);
+                        this.Grille_Terrain[i][j].setBrulure("X");
                     }
                     if(value <= Noise_Repartition){
                         this.Grille_Terrain[i][j].setVegetation(true);
+                        this.Grille_Terrain[i][j].setBrulure("");
                     }
                 }
             }
@@ -138,12 +141,18 @@ public class Terrain {
         for(int i=0;i<nb_depart;i++){
             int x=random.nextInt(longueur);
             int y=random.nextInt(largeur); 
-            if (this.Grille_Terrain[x][y].getCombustion() < 1 && this.Grille_Terrain[x][y].getBrulure() == "" && this.Grille_Terrain[x][y].getVegetation() == true){
-                this.Grille_Terrain[x][y].setCombustion(1);
-                this.Grille_Terrain[x][y].setBrulure("A");
-                this.Grille_Terrain[x][y].setVegetation(false);
-                System.out.println(x+" ; "+y);
+            while(this.Grille_Terrain[x][y].getVegetation() == false){
+                x=random.nextInt(longueur);
+                y=random.nextInt(largeur); 
             }
+            System.out.println("x = " + x + " | y = " + y);
+            //if (this.Grille_Terrain[x][y].getCombustion() < 1 && this.Grille_Terrain[x][y].getBrulure() == "" && this.Grille_Terrain[x][y].getVegetation() == true){
+            System.out.println("Combustion = " + this.Grille_Terrain[x][y].getCombustion() + " | Brulure = " + this.Grille_Terrain[x][y].getBrulure() + " | Vegetation = " +  this.Grille_Terrain[x][y].getVegetation());
+            this.Grille_Terrain[x][y].setCombustion(1);
+            this.Grille_Terrain[x][y].setBrulure("A");
+            this.Grille_Terrain[x][y].setVegetation(false);
+            //System.out.println(x+" ; "+y);
+            //}
         }
     }
     
