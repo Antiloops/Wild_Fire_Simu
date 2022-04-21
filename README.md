@@ -1,5 +1,10 @@
 # Wild_Fire_Simu
 
+Version 9.2
+- Dans la classe Terrain :
+   - Dans la méthode getBooleenRandomDouble() et getBooleenRandom() :
+        - Resolution du probleme de propagation du feu : ajout de "if(Proba != 0.0){...}" 
+
 Version 9.1
 - Dans la classe Terrain : 
    - Dans la méthode Affec_Vege() :
