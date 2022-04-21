@@ -1,5 +1,14 @@
 # Wild_Fire_Simu
 
+Version 8.0
+- Création de la classe OpenSimplexNoise
+- Dans la classe Terrain ;
+   - Dans la méthode Affec_Vege() :
+      - Implementatio du bruit de perlin pour faire la génération du terrain
+      - Version avec graine de génération et sans graine de génération
+   - Suppresion de la méthode Vegetation
+   - Ajout de la méthode Convertisseur()
+
 Version 7.0
 - Dans la classe Terrain :
    - Dans la méthode Propa_Feu() : 
