@@ -1,5 +1,13 @@
 # Wild_Fire_Simu
 
+Version 9.1
+- Dans la classe Terrain : 
+   - Dans la méthode Affec_Vege() :
+        - Resolution du problème de generation de terrain : argument "int feature_size" -> "float feature_size"
+   - Dans la méthode Depart_Feu() :
+        - Resolution des départs sur cases non inflammable : suppression du if(...){...} -> boucle while(this.Grille_Terrain[x][y].getVegetation() == false){}
+   - Dans la méthode CreaTableau() :
+        - Utilisation this.Grille_Terrain + getter et setter  
 
 Version 9.0
 - Création du package graphique :	
@@ -11,7 +19,7 @@ Version 8.0
 - Création de la classe OpenSimplexNoise
 - Dans la classe Terrain ;
     - Dans la méthode Affec_Vege() :
-        - Implementatio du bruit de perlin pour faire la génération du terrain
+        - Implementation du bruit de perlin pour faire la génération du terrain
         - Version avec graine de génération et sans graine de génération
     - Suppresion de la méthode Vegetation
     - Ajout de la méthode Convertisseur()
