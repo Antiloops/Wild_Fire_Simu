@@ -12,7 +12,8 @@ import java.util.Random;
  * @author Louis SAVIGNAC et Mathis LOPEZ
  */
 public class Terrain {
-    
+   //yes 
+             
     private Random random = new Random();
     
     private Case[][] Grille_Terrain; // Grille du terrain // type sera suremment modifié
@@ -129,7 +130,8 @@ public class Terrain {
         }
     }
     
-    public void Depart_Feu(int nb_depart){      // cette méthode initialise la/les  position du feu 
+    //Méthode initialisant la/les  position du feu 
+    public void Depart_Feu(int nb_depart){      
         Random random=new Random();
         int longueur = this.Grille_Terrain.length;;
         int largeur = this.Grille_Terrain[0].length;;
@@ -150,11 +152,16 @@ public class Terrain {
         for(int i=0;i<this.Grille_Terrain.length;i++){ //On parcourt la grille du terrain
             for(int j=0;j<this.Grille_Terrain[0].length;j++){
                 
+               
+                
                 boolean Condamne; //Condition de propagation du feu
                 int Position_X = i; //Coordonnees de la case sur la grille correspondant à la première de la grille de propagation
                 int Position_Y = j;
                 
+                //System.out.println("i = " + i + " | j = " + j + " | Position_X = " + Position_X + " | Position_Y = " + Position_Y);
+                
                 if(this.Grille_Terrain[i][j].getBrulure().equalsIgnoreCase("A")){ //On verifie si la case est en état : enflammé 
+                    //System.out.println("i = " + i + " | j = " + j + " | Position_X = " + Position_X + " | Position_Y = " + Position_Y);
                     Position_X = Position_X-4;
                     Position_Y = Position_Y-4;
                     for(int a=0;a<Repartition.length;a++){  //On parcourt la grille de Repartion pour avoir les probabilités de combustion d'une case
@@ -164,19 +171,18 @@ public class Terrain {
                             float Proba_Case = 0;
                             try{
                                 if(this.Grille_Terrain[Position_X][Position_Y].getVegetation() == true && this.Grille_Terrain[Position_X][Position_Y].getCondamne() == false){ //On effectue le tirage uniquement sur les cases avec forêt non condamnée
-                                    Proba_Case = (this.Grille_Terrain[Position_X][Position_Y].getHumidite()/100.0f)*(Repartition[b][a]/100.0f)*100.0f; //Calcul de la probabilite de combustion
+                                    Proba_Case = (this.Grille_Terrain[Position_X][Position_Y].getHumidite()/100.0f)*(Repartition[a][b]/100.0f); //Calcul de la probabilite de combustion
                                 }
                             }catch(ArrayIndexOutOfBoundsException ex){ //Si les coordonnées de la case indiquent qu'elle est à l'extérieur du terrain alors on retourne une erreur et on continue
-                                //System.out.println("Erreur d'indice");
-                                //throw ex;
                             }finally{
+                                //System.out.print("Position_1 = " + Position_X + " | Position_2 = " + Position_Y + " | Proba_Case = " + Proba_Case);
                             }
                             Condamne = getBooleenRandomDouble(Proba_Case); //On teste si la case va être condamnée
+                            //System.out.println(" | Condamne = " + Condamne);
                             if(Condamne == true){
                                 try{
                                     this.Grille_Terrain[Position_X][Position_Y].setCondamne(true); // On condamne la case définitivement
                                 }catch(ArrayIndexOutOfBoundsException ex){
-                                    //System.out.println("Erreur d'indice");
                                 }finally{
                                 }
                             }
@@ -186,6 +192,7 @@ public class Terrain {
                 }
                 
                 if(this.Grille_Terrain[i][j].getBrulure().equalsIgnoreCase("C")){ //On verifie si la case est en état : brulé chaud
+                    //System.out.println("i = " + i + " | j = " + j + " | Position_X = " + Position_X + " | Position_Y = " + Position_Y);
                     Position_X = Position_X-4;
                     Position_Y = Position_Y-4;
                     for(int a=0;a<Repartition.length;a++){  //On parcourt la grille de Repartion pour avoir les probabilités de combustion d'une case
@@ -195,19 +202,18 @@ public class Terrain {
                             double Proba_Case = 0;
                             try{
                                 if(this.Grille_Terrain[Position_X][Position_Y].getVegetation() == true && this.Grille_Terrain[Position_X][Position_Y].getCondamne() == false){
-                                    Proba_Case = 0.1*(1+2*Vent_Force)*(this.Grille_Terrain[Position_X][Position_Y].getHumidite()/100.0f)*(Repartition[b][a]/100.0f); //Calcul de la probabilite de combustion
+                                    Proba_Case = 0.08*(1+2*Vent_Force)*(this.Grille_Terrain[Position_X][Position_Y].getHumidite()/100.0f)*(Repartition[a][b]/100.0f); //Calcul de la probabilite de combustion
                                 }
                             }catch(ArrayIndexOutOfBoundsException ex){//Si les coordonnées de la case indiquent qu'elle est à l'extérieur du terrain alors on retourne une erreur et on continue
-                                //System.out.println("Erreur d'indice");
-                                //throw ex;
                             }finally{
+                                //System.out.print("Position_1 = " + Position_X + " | Position_2 = " + Position_Y + " | Proba_Case = " + Proba_Case);
                             }
                             Condamne = getBooleenRandomDouble(Proba_Case); //On teste si la case va être condamné
+                            //System.out.println(" | Condamne = " + Condamne);
                             if(Condamne == true){
                                 try{
                                     this.Grille_Terrain[Position_X][Position_Y].setCondamne(true); // On condamne la case définitivement
                                 }catch(ArrayIndexOutOfBoundsException ex){
-                                    //System.out.println("Erreur d'indice");
                                 }finally{
                                 }
                             }
