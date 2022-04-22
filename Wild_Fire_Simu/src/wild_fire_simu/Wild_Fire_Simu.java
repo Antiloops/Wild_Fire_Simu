@@ -17,15 +17,14 @@ public class Wild_Fire_Simu {
      * @param args the command line arguments
      */
     
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_RESET = "\u001B[0m";
     
     public static void main(String[] args) {
         
@@ -126,39 +125,39 @@ public class Wild_Fire_Simu {
         
         Terrain Foret = new Terrain();
         
-        Foret.CreaTableau(50,120,120);
+        Foret.CreaTableau(50,130,130);
         
-        Foret.Affec_Vege(75, 2, 150);
+        Foret.Affec_Vege(75, 8, 150);
         
         Foret.Depart_Feu(3);
         
         for(int i=0;i<Foret.getGrille().length;i++){
                 for(int j=0;j<Foret.getGrille()[0].length;j++){
-                    if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "" && Foret.getGrille()[i][j].getCombustion() == 0){
+                    if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "X" && Foret.getGrille()[i][j].getCombustion() == 0){
                         System.out.print(ANSI_BLUE + "X" + " " + ANSI_RESET);
                     }
                     else if(Foret.getGrille()[i][j].getVegetation() == true && Foret.getGrille()[i][j].getCombustion() == 0){
-                        System.out.print(ANSI_GREEN + "^" + " " + ANSI_RESET);
+                        System.out.print(ANSI_GREEN + "V" + " " + ANSI_RESET);
                     }
                     else{
-                        if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "A"){
+                        if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "A" && Foret.getGrille()[i][j].getCombustion() > 0){
                             System.out.print(ANSI_RED);
                         }
-                        if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "C"){
+                        else if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "C" && Foret.getGrille()[i][j].getCombustion() > 0){
                             System.out.print(ANSI_YELLOW);
                         }
-                        if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "F"){
+                        else if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "F" && Foret.getGrille()[i][j].getCombustion() > 0){
                             System.out.print(ANSI_WHITE);
                         }
                         System.out.print(Foret.getGrille()[i][j].getBrulure() + " " + ANSI_RESET);
                     }
                 }
-                System.out.println("|");
+                System.out.println("|" + ANSI_RESET);
             }
-        System.out.println("");
+        System.out.println("" + ANSI_RESET);
         
         
-        Vent wind = new Vent("nord",3);
+        Vent wind = new Vent("est",3);
         wind.Repartion_Vent();
         
         for(int i=0;i<wind.getRepartition().length;i++){
@@ -173,28 +172,28 @@ public class Wild_Fire_Simu {
             System.out.println("Iteration " + a);
             for(int i=0;i<Foret.getGrille().length;i++){
                 for(int j=0;j<Foret.getGrille()[0].length;j++){
-                    if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "" && Foret.getGrille()[i][j].getCombustion() == 0){
+                    if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "X" && Foret.getGrille()[i][j].getCombustion() == 0){
                         System.out.print(ANSI_BLUE + "X" + " " + ANSI_RESET);
                     }
                     else if(Foret.getGrille()[i][j].getVegetation() == true && Foret.getGrille()[i][j].getCombustion() == 0){
-                        System.out.print(ANSI_GREEN + "^" + " " + ANSI_RESET);
+                        System.out.print(ANSI_GREEN + "V" + " " + ANSI_RESET);
                     }
                     else{
-                        if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "A"){
+                        if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "A"  && Foret.getGrille()[i][j].getCombustion() > 0){
                             System.out.print(ANSI_RED);
                         }
-                        if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "C"){
+                        else if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "C" && Foret.getGrille()[i][j].getCombustion() > 0){
                             System.out.print(ANSI_YELLOW);
                         }
-                        if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "F"){
+                        else if(Foret.getGrille()[i][j].getVegetation() == false && Foret.getGrille()[i][j].getBrulure() == "F" && Foret.getGrille()[i][j].getCombustion() > 0){
                             System.out.print(ANSI_WHITE);
                         }
                         System.out.print(Foret.getGrille()[i][j].getBrulure() + " " + ANSI_RESET);
                     }
                 }
-                System.out.println("|");
+                System.out.println("|" + ANSI_RESET);
             }
-            System.out.println("");
+            System.out.println("" + ANSI_RESET);
             try{
                  Thread.sleep(0);
             }catch(InterruptedException ex){
