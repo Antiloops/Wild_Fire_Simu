@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -23,25 +27,154 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="Demarrer" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="475" max="32767" attributes="0"/>
-              <Component id="GeneTerrain" min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel_vege" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="jSlider_vege" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="161" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jLabel_humidité" min="-2" pref="51" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jSlider_humidité" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="294" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel_nbDepart" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                              <Component id="jTextField_nbDepart" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel_grain" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                              <Component id="jSlider_grain" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                              <Component id="jLabel_graine" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="jTextField_graine" min="-2" pref="88" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jRadioButton_Sud" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel_dirVent" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                      <Component id="jRadioButton_Nord" min="-2" pref="93" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jRadioButton_Est" alignment="1" min="-2" pref="93" max="-2" attributes="0"/>
+                                  <Component id="jRadioButton_Ouest" alignment="1" min="-2" pref="93" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jLabel_forceVent" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="jSlider_forceVent" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel_taille" min="-2" pref="32" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jTextField_longueur" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="jLabel_longueur" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel_largeur" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_largeur" min="-2" pref="51" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="jButton_quitter" max="32767" attributes="0"/>
+                  <Component id="jButton_annuler" max="32767" attributes="0"/>
+                  <Component id="Demarrer" alignment="1" max="32767" attributes="0"/>
+                  <Component id="GeneTerrain" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-              <Component id="Demarrer" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="GeneTerrain" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="243" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel_longueur" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_largeur" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="Demarrer" min="-2" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <Component id="GeneTerrain" min="-2" pref="42" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButton_annuler" min="-2" pref="46" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButton_quitter" min="-2" pref="36" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel_taille" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                          <Component id="jTextField_longueur" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField_largeur" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jSlider_humidité" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel_humidité" min="-2" pref="23" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel_vege" min="-2" max="-2" attributes="0"/>
+                          <Component id="jSlider_vege" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Component id="jLabel_grain" min="-2" max="-2" attributes="0"/>
+                              <Component id="jSlider_grain" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_graine" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_graine" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_dirVent" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jRadioButton_Nord" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_forceVent" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jSlider_forceVent" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jRadioButton_Sud" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jRadioButton_Est" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jRadioButton_Ouest" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel_nbDepart" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField_nbDepart" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="153" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,6 +195,111 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GeneTerrainActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_taille">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="taille "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_longueur">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_largeur">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_humidit&#xe9;">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="humidit&#xe9;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSlider" name="jSlider_humidit&#xe9;">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_vege">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="pourcentage de v&#xe9;g&#xe9;tation"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSlider" name="jSlider_vege">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_grain">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="grain"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSlider" name="jSlider_grain">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_graine">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="graine"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_graine">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="entrer graine"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_dirVent">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="direction du vent"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jRadioButton_Nord">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nord"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jRadioButton_Sud">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sud"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton_SudActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jRadioButton_Est">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Est"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="jRadioButton_Ouest">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ouest"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_forceVent">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="force du vent"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSlider" name="jSlider_forceVent">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_nbDepart">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="nombre de d&#xe9;part de feu"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField_nbDepart">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="entrer nombre"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton_annuler">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Annuler"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton_quitter">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Quitter"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_longueur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="longueur :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel_largeur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="largeur :"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
