@@ -1,5 +1,30 @@
 # Wild_Fire_Simu
 
+Version 9.3
+- Dans la classe Vent :
+   - Méthode Rotation_Matrice_Horaire() -> Rotation_Matrice_AntiHoraire()
+   - Méthode Rotation_Matrice_AntiHoraire() -> Rotation_Matrice_Horaire()
+        - Résolution du problème de rotation de matrice sur interface graphique
+- Dans la classe Terrain :
+   - Dans la méthode Affec_Vege() :
+        - Argument feature_size : float -> int
+- Dans la classe Fenetre :
+    - dimension panel syncro avec la grille du terrain
+    - Ajout Attribut Vent, Terrain et DemarrageOK
+    - Méthode run() :
+        - ajout de terrain et wind en argument
+    - DemarrerActionPerformed() :
+        - Ajout de condition de click : un click possible
+    - GeneTerrainActionPerformed() : 
+        - Création du terrain
+        - Initialisation du vent
+        - Création du pannel d'affichage de la simu
+        - Condition de click pour le lancement
+- Dans la classe Grille() :
+    - Modifications mineurs et d'intégrité du code
+- Dans la classe grillePanel :
+    - Modifications mineurs et d'intégrité du code
+
 Version 9.2
 - Dans la classe Terrain :
    - Dans la méthode getBooleenRandomDouble() et getBooleenRandom() :
