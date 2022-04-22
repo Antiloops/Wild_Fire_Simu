@@ -158,7 +158,6 @@ public class Wild_Fire_Simu {
         
         
         Vent wind = new Vent("est",3);
-        wind.Repartion_Vent();
         
         for(int i=0;i<wind.getRepartition().length;i++){
             for(int j=0;j<wind.getRepartition()[0].length;j++){

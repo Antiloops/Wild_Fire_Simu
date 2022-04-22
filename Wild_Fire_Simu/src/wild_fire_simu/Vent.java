@@ -20,6 +20,7 @@ public class Vent {
     public Vent(String sens,int force){ 
         this.Sens_Vent = sens;
         this.Force_Vent = force;
+        Repartion_Vent();
     }
     
     //Getter -> Methodes qui retourne les attributs de la case : le sens du vent, la force et le tableau de repartition du vent
@@ -49,7 +50,7 @@ public class Vent {
     }
     
     
-    public void Rotation_Matrice_AntiHoraire(int[][] OldRepartition){ //Methode permettant de tourner un tableau de taille nxn dans le sens antihoraire 
+    public void Rotation_Matrice_Horaire(int[][] OldRepartition){ //Methode permettant de tourner un tableau de taille nxn dans le sens antihoraire 
         int[][] NewRepartition = new int[7][7]; //Creation d'un tableau temporaire
         for(int i=0;i<NewRepartition.length;i++){   //Parcours du tableau 
             for(int j=0;j<NewRepartition[0].length;j++){
@@ -59,7 +60,7 @@ public class Vent {
         this.Repartition_Vent = NewRepartition; 
     }
     
-    public void Rotation_Matrice_Horaire(int[][] OldRepartition){   //Methode permettant de tourner une matrice de taille nxn dans le sens horaire
+    public void Rotation_Matrice_AntiHoraire(int[][] OldRepartition){   //Methode permettant de tourner une matrice de taille nxn dans le sens horaire
         int[][] NewRepartition = new int[7][7]; //Creation d'un tableau temporaire
         for(int i=0;i<NewRepartition.length;i++){   //Parcours du tableau
             for(int j=0;j<NewRepartition[0].length;j++){

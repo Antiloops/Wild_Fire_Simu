@@ -7,6 +7,7 @@ package Graphics;
 import java.util.Timer;
 import java.util.TimerTask;
 import wild_fire_simu.Terrain;
+import wild_fire_simu.Vent;
 
 /**
  *
@@ -18,16 +19,13 @@ public class Fenetre extends javax.swing.JFrame {
     private Timer t;
     public Fenetre() {
         initComponents();
-        grPanel=new grillePanel();
-        this.add(grPanel); // on ajoute à notre fenêtre notre panel
-        this.pack(); // permet de bien ajuster notre panel dans notre fenêtre
     }
     
     public class Tache extends TimerTask {
-    public void run(){ 
-        grPanel.getGr1().changeColor(); 
-        grPanel.repaint();
-    }
+        public void run(){
+            grPanel.getGr1().changeColor(terrain,wind); 
+            grPanel.repaint();
+        }
     }
 
     /**
@@ -67,7 +65,7 @@ public class Fenetre extends javax.swing.JFrame {
                 .addComponent(Demarrer)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 1162, Short.MAX_VALUE)
+                .addGap(0, 475, Short.MAX_VALUE)
                 .addComponent(GeneTerrain))
         );
         layout.setVerticalGroup(
@@ -77,35 +75,49 @@ public class Fenetre extends javax.swing.JFrame {
                 .addComponent(Demarrer)
                 .addGap(18, 18, 18)
                 .addComponent(GeneTerrain)
-                .addContainerGap(758, Short.MAX_VALUE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // bouton pour lancer une simulation
     private void DemarrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DemarrerActionPerformed
-        terrain.Depart_Feu(1); // on lance nos départs de feu
-        t=new Timer(); 
-        t.schedule(new Tache(),0,2000); // on execute notre tache toutes les 2000ms
+        if(DemarrageOK == true){
+            terrain.Depart_Feu(1); // on lance nos départs de feu
+            System.out.println("activé");
+            t = new Timer(); 
+            t.schedule(new Tache(),0,100); // on execute notre tache toutes les 100ms
+            DemarrageOK=false;
+        }
     }//GEN-LAST:event_DemarrerActionPerformed
 
+    // bouton de la génération du terrain
     private void GeneTerrainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GeneTerrainActionPerformed
-        terrain.Affec_Vege(50, 60, 2000); // on place la végétation avec une disposition unique
+        terrain.CreaTableau(90, 800, 800); // on créer un terrain
+        terrain.Affec_Vege(75, 50, 11092001); // on place la végétation avec une disposition unique
+        wind=new Vent("NORD", 3); // on initialise notre Vent
+        grPanel = new grillePanel(terrain);
+        this.add(grPanel); // on ajoute à notre fenêtre notre panel
+        this.pack();
         grPanel.repaint(); // on repaint notre panel pour mettre à jour les couleurs du nouveau panel
+        DemarrageOK = true; // notre boolean devient vrai ce qui permet de lancer une simulation
     }//GEN-LAST:event_GeneTerrainActionPerformed
 
     /**
      * @param args the command line arguments
      */
     
-    static Terrain terrain =new Terrain();
-    
+    // attributs : 
+    static Terrain terrain =new Terrain();  
+    static Vent wind;
+    boolean DemarrageOK = false;
     
     public static void main(String args[]) {
         
         Fenetre window=new Fenetre();
         window.setVisible(true);
-        //new Fenetre().setVisible(true);
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

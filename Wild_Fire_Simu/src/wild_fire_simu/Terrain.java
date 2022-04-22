@@ -71,7 +71,7 @@ public class Terrain {
     }
     
     //Methode qui permet d'initialiser la vegetation du terrain sans graine de generation
-    public void Affec_Vege(int Repartition, float feature_size){
+    public void Affec_Vege(int Repartition, double feature_size){
         float Noise_Repartition = Convertisseur(Repartition);
         boolean AffectCorrect = false;      //Variable de verification de la bonne mise en place du programme
         OpenSimplexNoise noise = new OpenSimplexNoise();     //Creation d'un objet de la classe OpenSimplexNoise
@@ -99,7 +99,7 @@ public class Terrain {
     }
     
     //Methode qui permet d'initialiser la vegetation du terrain avec graine de generation
-    public void Affec_Vege(int Repartition, float feature_size, long Seed){
+    public void Affec_Vege(int Repartition, double feature_size, long Seed){
         float Noise_Repartition = Convertisseur(Repartition);
         boolean AffectCorrect = false;      //Variable de verification de la bonne mise en place du programme
         OpenSimplexNoise noise = new OpenSimplexNoise(Seed);     //Creation d'un objet de la classe OpenSimplexNoise et initialisation de la graine de generation
@@ -190,7 +190,7 @@ public class Terrain {
                             double Proba_Case = 0;
                             try{
                                 if(this.Grille_Terrain[Position_X][Position_Y].getVegetation() == true && this.Grille_Terrain[Position_X][Position_Y].getCondamne() == false){
-                                    Proba_Case = 0.3*(1+2*Vent_Force)*(this.Grille_Terrain[Position_X][Position_Y].getHumidite()/100.0f)*(Repartition[a][b]/100.0f); //Calcul de la probabilite de combustion
+                                    Proba_Case = 0.001*(1+2*Vent_Force)*(this.Grille_Terrain[Position_X][Position_Y].getHumidite()/100.0f)*(Repartition[a][b]/100.0f); //Calcul de la probabilite de combustion
                                 }
                             }catch(ArrayIndexOutOfBoundsException ex){//Si les coordonnees de la case indiquent qu'elle est à l'exterieur du terrain alors on retourne une erreur et on continue
                             }finally{
