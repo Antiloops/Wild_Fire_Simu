@@ -11,8 +11,8 @@ import wild_fire_simu.Terrain;
 import wild_fire_simu.Vent;
 
 /**
- *
- * @author ASUS
+ * 
+ * Auteurs : Louis Savignac et Mathis Lopez 
  */
 public class Fenetre extends javax.swing.JFrame {
 
@@ -420,10 +420,10 @@ public class Fenetre extends javax.swing.JFrame {
         
         //Initialisation du terrain        
         if(Initialisation == true){
-            terrain.CreaTableau(Humidite, Longueur, Largeur); // on créer un terrain
-            terrain.Affec_Vege(Pourcentage_Vegetation, Grain, Graine); // on place la végétation avec une disposition unique
-            wind = new Vent(Direction_Vent, Force_Vent); // on initialise notre Vent
-            grPanel = new grillePanel(terrain);
+            terrain.CreaTableau(Humidite, Longueur, Largeur); //Creation du terrain
+            terrain.Affec_Vege(Pourcentage_Vegetation, Grain, Graine); //Affectation de la vegetation
+            wind = new Vent(Direction_Vent, Force_Vent); //Initialisation du vent
+            grPanel = new grillePanel(terrain); //Creation du panel de simulation
             this.add(grPanel); // on ajoute à notre fenêtre notre panel
             grPanel.repaint(); // on repaint notre panel pour mettre à jour les couleurs du nouveau panel
             DemarrageOK = true; // notre boolean devient vrai ce qui permet de lancer une simulation
@@ -461,8 +461,8 @@ public class Fenetre extends javax.swing.JFrame {
 
     private void jButton_AnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AnnulerActionPerformed
         t.cancel();
-        t.purge();
-        this.remove(grPanel); // on ajoute à notre fenêtre notre panel
+        t.purge();  //On arrête le processus de calcul de propagation
+        this.remove(grPanel); //On retire le panel de la fenêtre
         DemarrageOK = true;
         jLabel_Taille.setVisible(true);
         jLabel_Longueur.setVisible(true);
