@@ -73,7 +73,9 @@ public class Fenetre extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton_Demarrer.setBackground(new java.awt.Color(10, 50, 190));
+        jButton_Demarrer.setBackground(new java.awt.Color(20, 60, 222));
+        jButton_Demarrer.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        jButton_Demarrer.setForeground(new java.awt.Color(240, 240, 240));
         jButton_Demarrer.setText("Demarrer");
         jButton_Demarrer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +157,7 @@ public class Fenetre extends javax.swing.JFrame {
         jTextField_NbDepart.setText("1");
 
         jButton_Annuler.setBackground(new java.awt.Color(240, 140, 0));
+        jButton_Annuler.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jButton_Annuler.setForeground(new java.awt.Color(0, 0, 0));
         jButton_Annuler.setText("Annuler");
         jButton_Annuler.addActionListener(new java.awt.event.ActionListener() {
@@ -223,9 +226,7 @@ public class Fenetre extends javax.swing.JFrame {
                                             .addComponent(jTextField_Longueur, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(24, 24, 24)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel_Largeur)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(jLabel_Largeur)
                                             .addComponent(jTextField_Largeur)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
