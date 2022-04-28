@@ -1,5 +1,23 @@
 # Wild_Fire_Simu
 
+Version 9.4
+- Dans la classe Fenetre :
+   - Ajout des attributs d'initialisation de la simuation : Humidite, Longueur, Largeur, Pourcentage_Vegetation, Grain, Graine, Direction_Vent, Force_Vent, Nb_Depart
+   - Ajout condition initialisation : Initialisation
+   - Ajout des components pour l'initialisation de la simu sur la JFrame
+   - Dans la méthode jButton_GeneTerrainActionPerformed()
+        - Affectation des valeurs de la fenêtre aux paramètres d'initialisation de la simulation
+        - Gestion des erreurs et des cas d'initialisation invalide
+   - Ajout d'un listener pour jButton_Annuler
+        - Système d'arrêt de la simulation
+        - Déaffichage du panel de simulation
+        - Réaffichige des components d'initialisation
+   - Ajout d'un listener pour jButton_Quitter
+        - Quitter la simulation
+- Dans la classe grillePannel, Terrain, Vemt
+   - Correction de la mauvaise direction du vent  
+ 
+
 Version 9.3
 - Dans la classe Vent :
    - Méthode Rotation_Matrice_Horaire() -> Rotation_Matrice_AntiHoraire()
