@@ -14,24 +14,30 @@ import wild_fire_simu.Terrain;
  */
 public class grillePanel extends javax.swing.JPanel {  // classe de notre panel sur lequel on affichera notre grille
 
-    // attribut
+    //Attribut
     private Grille gr1; 
     
-    // constructeur , prend en argument un Terrain
+    //Constructeur , prend en argument un Terrain
     public grillePanel(Terrain land) { 
         gr1 = new Grille(land);
+        System.out.println("Longueur = " + land.getGrille().length + " | Largeur = " + land.getGrille()[0].length);
         this.setSize(new Dimension(land.getGrille().length,land.getGrille()[0].length)); // la taille du panel correspond aux dimensions de notre grille
         initComponents();
     }
-    public Grille getGr1(){ //on fait une méthode get car les l'attribut est privé
+    
+    //Getter
+    public Grille getGr1(){ 
         return gr1;// cette méthode renvoie notre grille
     }
+    
     public void paint(Graphics g){
-        for(int x=0;x<gr1.getGrilleColors().length;x++){
-            for(int y=0;y<gr1.getGrilleColors().length;y++){
-                g.setColor(gr1.getCellColor(y, x)); // on récupère lélément aux coordonées x et y de notre grille et on regarde à quelle couleur ça correspond
+        for(int x = 0; x < gr1.getGrilleColors().length; x++){
+            //System.out.print("x = " + x);
+            for(int y = 0; y < gr1.getGrilleColors()[0].length; y++){
+                //System.out.println(" | y = " + y);
+                g.setColor(gr1.getCellColor(x, y)); // on récupère lélément aux coordonées x et y de notre grille et on regarde à quelle couleur ça correspond
                 // la couleur est définie par cet élément 
-                g.fillRect(x,y,1,1); // on colorie un rectangle de longueur 1 et de largeur 1 au niveau de la case, c'est à dire un pixel
+                g.fillRect(x, y, 1, 1); // on colorie un rectangle de longueur 1 et de largeur 1 au niveau de la case, c'est à dire un pixel
             }
         }
     }

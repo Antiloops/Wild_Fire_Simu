@@ -4,6 +4,7 @@
  */
 package Graphics;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import wild_fire_simu.Terrain;
@@ -38,89 +39,142 @@ public class Fenetre extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        Demarrer = new javax.swing.JButton();
-        GeneTerrain = new javax.swing.JButton();
-        jLabel_taille = new javax.swing.JLabel();
-        jTextField_longueur = new javax.swing.JTextField();
-        jTextField_largeur = new javax.swing.JTextField();
-        jLabel_humidité = new javax.swing.JLabel();
-        jSlider_humidité = new javax.swing.JSlider();
-        jLabel_vege = new javax.swing.JLabel();
-        jSlider_vege = new javax.swing.JSlider();
-        jLabel_grain = new javax.swing.JLabel();
-        jSlider_grain = new javax.swing.JSlider();
-        jLabel_graine = new javax.swing.JLabel();
-        jTextField_graine = new javax.swing.JTextField();
-        jLabel_dirVent = new javax.swing.JLabel();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        jButton_Demarrer = new javax.swing.JButton();
+        jButton_GeneTerrain = new javax.swing.JButton();
+        jLabel_Taille = new javax.swing.JLabel();
+        jTextField_Longueur = new javax.swing.JTextField();
+        jTextField_Largeur = new javax.swing.JTextField();
+        jLabel_Humidité = new javax.swing.JLabel();
+        jSlider_Humidité = new javax.swing.JSlider();
+        jLabel_Vege = new javax.swing.JLabel();
+        jSlider_Pourcentage_Vegetation = new javax.swing.JSlider();
+        jLabel_Grain = new javax.swing.JLabel();
+        jSlider_Grain = new javax.swing.JSlider();
+        jLabel_Graine = new javax.swing.JLabel();
+        jTextField_Graine = new javax.swing.JTextField();
+        jLabel_Direction_Vent = new javax.swing.JLabel();
         jRadioButton_Nord = new javax.swing.JRadioButton();
         jRadioButton_Sud = new javax.swing.JRadioButton();
         jRadioButton_Est = new javax.swing.JRadioButton();
         jRadioButton_Ouest = new javax.swing.JRadioButton();
-        jLabel_forceVent = new javax.swing.JLabel();
-        jSlider_forceVent = new javax.swing.JSlider();
-        jLabel_nbDepart = new javax.swing.JLabel();
-        jTextField_nbDepart = new javax.swing.JTextField();
-        jButton_annuler = new javax.swing.JButton();
-        jButton_quitter = new javax.swing.JButton();
-        jLabel_longueur = new javax.swing.JLabel();
-        jLabel_largeur = new javax.swing.JLabel();
+        jLabel_Force_Vent = new javax.swing.JLabel();
+        jSlider_ForceVent = new javax.swing.JSlider();
+        jLabel_Nb_Depart = new javax.swing.JLabel();
+        jTextField_NbDepart = new javax.swing.JTextField();
+        jButton_Annuler = new javax.swing.JButton();
+        jButton_Quitter = new javax.swing.JButton();
+        jLabel_Longueur = new javax.swing.JLabel();
+        jLabel_Largeur = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea_Message = new javax.swing.JTextArea();
+        jLabel_Message = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Demarrer.setText("Demarrer");
-        Demarrer.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Demarrer.setText("Demarrer");
+        jButton_Demarrer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DemarrerActionPerformed(evt);
+                jButton_DemarrerActionPerformed(evt);
             }
         });
 
-        GeneTerrain.setText("Générer terrain");
-        GeneTerrain.addActionListener(new java.awt.event.ActionListener() {
+        jButton_GeneTerrain.setText("Générer terrain");
+        jButton_GeneTerrain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GeneTerrainActionPerformed(evt);
+                jButton_GeneTerrainActionPerformed(evt);
             }
         });
 
-        jLabel_taille.setText("taille ");
+        jLabel_Taille.setText("Taille :");
 
-        jLabel_humidité.setText("humidité");
+        jTextField_Longueur.setText("800");
 
-        jLabel_vege.setText("pourcentage de végétation");
+        jTextField_Largeur.setText("600");
 
-        jLabel_grain.setText("grain");
+        jLabel_Humidité.setText("Humidité :");
 
-        jLabel_graine.setText("graine");
+        jSlider_Humidité.setMajorTickSpacing(10);
+        jSlider_Humidité.setMinorTickSpacing(2);
+        jSlider_Humidité.setPaintLabels(true);
+        jSlider_Humidité.setPaintTicks(true);
+        jSlider_Humidité.setSnapToTicks(true);
 
-        jTextField_graine.setText("entrer graine");
+        jLabel_Vege.setText("Pourcentage de végétation :");
 
-        jLabel_dirVent.setText("direction du vent");
+        jSlider_Pourcentage_Vegetation.setMajorTickSpacing(10);
+        jSlider_Pourcentage_Vegetation.setMinorTickSpacing(2);
+        jSlider_Pourcentage_Vegetation.setPaintLabels(true);
+        jSlider_Pourcentage_Vegetation.setPaintTicks(true);
+        jSlider_Pourcentage_Vegetation.setSnapToTicks(true);
 
+        jLabel_Grain.setText("Grain :");
+
+        jSlider_Grain.setMajorTickSpacing(10);
+        jSlider_Grain.setMaximum(90);
+        jSlider_Grain.setMinorTickSpacing(2);
+        jSlider_Grain.setPaintLabels(true);
+        jSlider_Grain.setPaintTicks(true);
+        jSlider_Grain.setSnapToTicks(true);
+
+        jLabel_Graine.setText("Graine :");
+
+        jTextField_Graine.setText("1");
+
+        jLabel_Direction_Vent.setText("direction du vent :");
+
+        buttonGroup1.add(jRadioButton_Nord);
+        jRadioButton_Nord.setSelected(true);
         jRadioButton_Nord.setText("Nord");
+        jRadioButton_Nord.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        buttonGroup1.add(jRadioButton_Sud);
         jRadioButton_Sud.setText("Sud");
-        jRadioButton_Sud.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton_SudActionPerformed(evt);
-            }
-        });
 
+        buttonGroup1.add(jRadioButton_Est);
         jRadioButton_Est.setText("Est");
 
+        buttonGroup1.add(jRadioButton_Ouest);
         jRadioButton_Ouest.setText("Ouest");
 
-        jLabel_forceVent.setText("force du vent");
+        jLabel_Force_Vent.setText("force du vent :");
 
-        jLabel_nbDepart.setText("nombre de départ de feu");
+        jSlider_ForceVent.setMajorTickSpacing(1);
+        jSlider_ForceVent.setMaximum(3);
+        jSlider_ForceVent.setPaintLabels(true);
+        jSlider_ForceVent.setPaintTicks(true);
+        jSlider_ForceVent.setSnapToTicks(true);
 
-        jTextField_nbDepart.setText("entrer nombre");
+        jLabel_Nb_Depart.setText("nombre de départ de feu :");
 
-        jButton_annuler.setText("Annuler");
+        jTextField_NbDepart.setText("1");
 
-        jButton_quitter.setText("Quitter");
+        jButton_Annuler.setText("Annuler");
+        jButton_Annuler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_AnnulerActionPerformed(evt);
+            }
+        });
 
-        jLabel_longueur.setText("longueur :");
+        jButton_Quitter.setText("Quitter");
+        jButton_Quitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_QuitterActionPerformed(evt);
+            }
+        });
 
-        jLabel_largeur.setText("largeur :");
+        jLabel_Longueur.setText("longueur :");
+
+        jLabel_Largeur.setText("largeur :");
+
+        jTextArea_Message.setColumns(20);
+        jTextArea_Message.setForeground(new java.awt.Color(222, 0, 0));
+        jTextArea_Message.setRows(5);
+        jTextArea_Message.setText("Les messages d'erreurs s'afficheront ici");
+        jScrollPane1.setViewportView(jTextArea_Message);
+
+        jLabel_Message.setText("Message :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,216 +184,363 @@ public class Fenetre extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel_vege)
-                                .addGap(30, 30, 30)
-                                .addComponent(jSlider_vege, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel_humidité, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jSlider_humidité, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(294, 294, 294))
+                        .addComponent(jLabel_Message)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel_Grain)
+                            .addComponent(jLabel_Humidité)
+                            .addComponent(jLabel_Vege)
+                            .addComponent(jLabel_Taille)
+                            .addComponent(jLabel_Graine)
+                            .addComponent(jLabel_Direction_Vent)
+                            .addComponent(jLabel_Force_Vent)
+                            .addComponent(jLabel_Nb_Depart))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel_nbDepart)
-                                .addGap(28, 28, 28)
-                                .addComponent(jTextField_nbDepart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel_grain)
-                                .addGap(28, 28, 28)
-                                .addComponent(jSlider_grain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(56, 56, 56)
-                                .addComponent(jLabel_graine)
-                                .addGap(39, 39, 39)
-                                .addComponent(jTextField_graine, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jRadioButton_Sud, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jSlider_Pourcentage_Vegetation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSlider_Humidité, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel_dirVent)
-                                        .addGap(39, 39, 39)
-                                        .addComponent(jRadioButton_Nord, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jRadioButton_Est, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jRadioButton_Ouest, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel_forceVent)
-                                .addGap(33, 33, 33)
-                                .addComponent(jSlider_forceVent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextField_Longueur, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel_Longueur))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel_Largeur)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE))
+                                            .addComponent(jTextField_Largeur)))
+                                    .addComponent(jSlider_Grain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel_taille, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField_longueur, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel_longueur))
-                                .addGap(59, 59, 59)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel_largeur)
-                                    .addComponent(jTextField_largeur, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton_quitter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_annuler, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Demarrer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(GeneTerrain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(47, 47, 47))
+                                    .addComponent(jTextField_NbDepart, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jSlider_ForceVent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextField_Graine)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jRadioButton_Nord, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jRadioButton_Sud, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jRadioButton_Ouest, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jRadioButton_Est, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_GeneTerrain, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton_Annuler, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_Quitter, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_Demarrer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_longueur)
-                    .addComponent(jLabel_largeur))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Demarrer, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addComponent(GeneTerrain, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(142, 142, 142)
+                        .addComponent(jButton_GeneTerrain, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton_annuler, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_Demarrer, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton_quitter, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton_Annuler, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton_Quitter, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel_taille, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_longueur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_largeur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel_Longueur)
+                            .addComponent(jLabel_Largeur))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel_Taille, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField_Longueur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField_Largeur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSlider_humidité, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_humidité, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSlider_Humidité, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_Humidité, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_vege)
-                            .addComponent(jSlider_vege, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
+                            .addComponent(jLabel_Vege)
+                            .addComponent(jSlider_Pourcentage_Vegetation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel_grain)
-                                .addComponent(jSlider_grain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel_graine)
-                                .addComponent(jTextField_graine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel_dirVent)
-                                .addComponent(jRadioButton_Nord)
-                                .addComponent(jLabel_forceVent))
-                            .addComponent(jSlider_forceVent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton_Sud)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton_Est)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton_Ouest)
+                            .addComponent(jSlider_Grain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_Grain))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel_nbDepart)
-                            .addComponent(jTextField_nbDepart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(153, Short.MAX_VALUE))
+                            .addComponent(jTextField_Graine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_Graine))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel_Direction_Vent)
+                            .addComponent(jRadioButton_Nord)
+                            .addComponent(jRadioButton_Sud)
+                            .addComponent(jRadioButton_Ouest)
+                            .addComponent(jRadioButton_Est))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_Force_Vent)
+                            .addComponent(jSlider_ForceVent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_Nb_Depart)
+                    .addComponent(jTextField_NbDepart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_Message)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49))
         );
+
+        jSlider_Pourcentage_Vegetation.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // bouton pour lancer une simulation
-    private void DemarrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DemarrerActionPerformed
+    private void jButton_DemarrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DemarrerActionPerformed
+        jTextArea_Message.selectAll();
+        jTextArea_Message.replaceSelection("SIMULATION EN COURS");
         if(DemarrageOK == true){
-            terrain.Depart_Feu(1); // on lance nos départs de feu
-            System.out.println("activé");
+            terrain.Depart_Feu(Nb_Depart); // on lance Nb_Depart departs de feu
             t = new Timer(); 
-            t.schedule(new Tache(),0,100); // on execute notre tache toutes les 100ms
-            DemarrageOK=false;
+            t.schedule(new Tache(), 0, 100); // on execute notre tache toutes les 100ms
+            DemarrageOK = false;
         }
-    }//GEN-LAST:event_DemarrerActionPerformed
+    }//GEN-LAST:event_jButton_DemarrerActionPerformed
 
     // bouton de la génération du terrain
-    private void GeneTerrainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GeneTerrainActionPerformed
-        terrain.CreaTableau(90, 800, 800); // on créer un terrain
-        terrain.Affec_Vege(75, 50, 11092001); // on place la végétation avec une disposition unique
-        wind=new Vent("NORD", 3); // on initialise notre Vent
-        grPanel = new grillePanel(terrain);
-        this.add(grPanel); // on ajoute à notre fenêtre notre panel
-        this.pack();
-        grPanel.repaint(); // on repaint notre panel pour mettre à jour les couleurs du nouveau panel
-        DemarrageOK = true; // notre boolean devient vrai ce qui permet de lancer une simulation
-        jLabel_taille.setVisible(false);
-        jLabel_longueur.setVisible(false);
-        jLabel_largeur.setVisible(false);
-        jLabel_humidité.setVisible(false);
-        jLabel_vege.setVisible(false);
-        jLabel_grain.setVisible(false);
-        jLabel_graine.setVisible(false);
-        jLabel_dirVent.setVisible(false);
-        jLabel_forceVent.setVisible(false);
-        jLabel_nbDepart.setVisible(false);
-        jTextField_longueur.setVisible(false);
-        jTextField_largeur.setVisible(false);
-        jTextField_graine.setVisible(false);
-        jTextField_nbDepart.setVisible(false);
-        jSlider_humidité.setVisible(false);
-        jSlider_vege.setVisible(false);
-        jSlider_grain.setVisible(false);
-        jSlider_forceVent.setVisible(false);
-        jRadioButton_Nord.setVisible(false);
-        jRadioButton_Sud.setVisible(false);
-        jRadioButton_Est.setVisible(false);
-        jRadioButton_Ouest.setVisible(false);
-    }//GEN-LAST:event_GeneTerrainActionPerformed
+    private void jButton_GeneTerrainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GeneTerrainActionPerformed
 
-    private void jRadioButton_SudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_SudActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton_SudActionPerformed
+        //Recuperation des valeurs pour la simulation
+        
+        //Recuperation Longueur
+        try{
+            Longueur = Integer.parseInt(jTextField_Longueur.getText()); //On recupere la valeur de la longueur dans le text field
+            if(Longueur < 20){   //Si la longueur du terrain est inferieur a 20 alors le tableau est trop petit
+                jTextArea_Message.selectAll();
+                jTextArea_Message.replaceSelection("LONGUEUR : \nLa valeur n'est pas un entier ou le nombre est trop long");    //On affiche un message d'erreur
+                Initialisation = false; //On empêche la simulation de se lancer
+            }
+        }catch (NumberFormatException ex){  //Dans le cas d'une exceptition on execute la boucle suivante
+            jTextArea_Message.selectAll();
+            jTextArea_Message.replaceSelection("LONGUEUR : \nLa valeur n'est pas un entier ou le nombre est trop long");    //On affiche un message d'erreur
+            Initialisation = false;  //On empêche la simulation de se lancer
+            //throw ex;   
+        }
+        //Recuperation Largeur
+        try{
+            Largeur = Integer.parseInt(jTextField_Largeur.getText());   //On recupere la valeur de la largeur dans le text field
+            if(Largeur < 20){   //Si la largeur du terrain est inferieur a 20 alors le tableau est trop petit
+                jTextArea_Message.selectAll();
+                jTextArea_Message.replaceSelection("LARGEUR : \nLa valeur n'est pas un entier ou le nombre est trop long");    //On affiche un message d'erreur
+                Initialisation = false; //On empêche la simulation de se lancer
+            }
+        }catch (NumberFormatException ex){  //Dans le cas d'une exceptition on execute la boucle suivante
+            jTextArea_Message.selectAll();
+            jTextArea_Message.replaceSelection("LARGEUR : \nLa valeur n'est pas un entier ou le nombre est trop long");    //On affiche un message d'erreur
+            Initialisation = false; //On empêche la simulation de se lancer
+            //throw ex;    
+        }
+        //Recuperation Humidite
+        Humidite = jSlider_Humidité.getValue();
+        //Recuperation Pourcentage de Vegetation
+        Pourcentage_Vegetation = jSlider_Pourcentage_Vegetation.getValue();
+        //Recuperation Grain
+        Grain = jSlider_Grain.getValue();
+        //Recuperation Graine de generation
+        try{
+            Graine = Integer.parseInt(jTextField_Graine.getText());   //On recupere la valeur de la graine dans le text field
+            if(Graine < 0){   //Si la graine est négative alors on ne lance pas la simulation
+                jTextArea_Message.selectAll();
+                jTextArea_Message.replaceSelection("GRAINE : \nLa valeur ne peut pas être négative");    //On affiche un message d'erreur
+                Initialisation = false; //On empêche la simulation de se lancer
+            }
+        }catch (NumberFormatException ex){  //Dans le cas d'une exceptition on execute la boucle suivante
+            jTextArea_Message.selectAll();
+            jTextArea_Message.replaceSelection("GRAINE : \nLa valeur n'est pas un entier ou le nombre est trop long");    //On affiche un message d'erreur
+            Initialisation = false; //On empêche la simulation de se lancer
+            //throw ex;    
+        }
+        //Recuperation Direction du vent
+        if(jRadioButton_Nord.isSelected()){ //On regarder quel radionbutton est selectionner sur la fenêtre
+            Direction_Vent = "NORD";
+        }
+        else if(jRadioButton_Sud.isSelected()){
+            Direction_Vent = "SUD";
+        }
+        else if(jRadioButton_Est.isSelected()){
+            Direction_Vent = "EST";
+        }
+        else if(jRadioButton_Ouest.isSelected()){
+            Direction_Vent = "OUEST";
+        }
+        else{   //Si aucun n'est selectionné alors on envoie un message et on empeche l'initialisation
+            jTextArea_Message.selectAll();
+            jTextArea_Message.replaceSelection("DIRECTION_VENT : \nIl faut selectionner une direction");
+            Initialisation = false;
+        }
+        //Recuperation Force du vent
+        Force_Vent = jSlider_ForceVent.getValue();
+        //Recuperation nombre de depart de feu
+        try{
+            Nb_Depart = Integer.parseInt(jTextField_NbDepart.getText());   //On recupere le nombre de depart de feu dans le text field
+            if(Nb_Depart < 0){   //Si le nombre est négatif alors on ne lance pas la simulation
+                jTextArea_Message.selectAll();
+                jTextArea_Message.replaceSelection("NB_DEPART : \nLa valeur ne peut pas être négative");    //On affiche un message d'erreur
+                Initialisation = false; //On empêche la simulation de se lancer
+            }
+        }catch (NumberFormatException ex){  //Dans le cas d'une exceptition on execute la boucle suivante
+            jTextArea_Message.selectAll();
+            jTextArea_Message.replaceSelection("NB_DEPART : \nLa valeur n'est pas un entier ou le nombre est trop long");    //On affiche un message d'erreur
+            Initialisation = false; //On empêche la simulation de se lancer
+            //throw ex;    
+        }
+        
+        //Initialisation du terrain        
+        if(Initialisation == true){
+            terrain.CreaTableau(Humidite, Longueur, Largeur); // on créer un terrain
+            terrain.Affec_Vege(Pourcentage_Vegetation, Grain, Graine); // on place la végétation avec une disposition unique
+            wind = new Vent(Direction_Vent, Force_Vent); // on initialise notre Vent
+            grPanel = new grillePanel(terrain);
+            this.add(grPanel); // on ajoute à notre fenêtre notre panel
+            grPanel.repaint(); // on repaint notre panel pour mettre à jour les couleurs du nouveau panel
+            DemarrageOK = true; // notre boolean devient vrai ce qui permet de lancer une simulation
+            jLabel_Taille.setVisible(false);
+            jLabel_Longueur.setVisible(false);
+            jLabel_Largeur.setVisible(false);
+            jLabel_Humidité.setVisible(false);
+            jLabel_Vege.setVisible(false);
+            jLabel_Grain.setVisible(false);
+            jLabel_Graine.setVisible(false);
+            jLabel_Direction_Vent.setVisible(false);
+            jLabel_Force_Vent.setVisible(false);
+            jLabel_Nb_Depart.setVisible(false);
+            jTextField_Longueur.setVisible(false);
+            jTextField_Largeur.setVisible(false);
+            jTextField_Graine.setVisible(false);
+            jTextField_NbDepart.setVisible(false);
+            jSlider_Humidité.setVisible(false);
+            jSlider_Pourcentage_Vegetation.setVisible(false);
+            jSlider_Grain.setVisible(false);
+            jSlider_ForceVent.setVisible(false);
+            jRadioButton_Nord.setVisible(false);
+            jRadioButton_Sud.setVisible(false);
+            jRadioButton_Est.setVisible(false);
+            jRadioButton_Ouest.setVisible(false);
+            jButton_GeneTerrain.setVisible(false);
+            this.setSize(terrain.getGrille().length + 190,terrain.getGrille()[0].length + 200);
+            jTextArea_Message.selectAll();
+            jTextArea_Message.replaceSelection("TERRAIN INITIALISE");
+        }
+        
+    }//GEN-LAST:event_jButton_GeneTerrainActionPerformed
+
+    private void jButton_AnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AnnulerActionPerformed
+        t.cancel();
+        t.purge();
+        this.remove(grPanel); // on ajoute à notre fenêtre notre panel
+        DemarrageOK = true;
+        jLabel_Taille.setVisible(true);
+        jLabel_Longueur.setVisible(true);
+        jLabel_Largeur.setVisible(true);
+        jLabel_Humidité.setVisible(true);
+        jLabel_Vege.setVisible(true);
+        jLabel_Grain.setVisible(true);
+        jLabel_Graine.setVisible(true);
+        jLabel_Direction_Vent.setVisible(true);
+        jLabel_Force_Vent.setVisible(true);
+        jLabel_Nb_Depart.setVisible(true);
+        jTextField_Longueur.setVisible(true);
+        jTextField_Largeur.setVisible(true);
+        jTextField_Graine.setVisible(true);
+        jTextField_NbDepart.setVisible(true);
+        jSlider_Humidité.setVisible(true);
+        jSlider_Pourcentage_Vegetation.setVisible(true);
+        jSlider_Grain.setVisible(true);
+        jSlider_ForceVent.setVisible(true);
+        jRadioButton_Nord.setVisible(true);
+        jRadioButton_Sud.setVisible(true);
+        jRadioButton_Est.setVisible(true);
+        jRadioButton_Ouest.setVisible(true);
+        jButton_GeneTerrain.setVisible(true);
+        this.pack();
+        jTextArea_Message.selectAll();
+        jTextArea_Message.replaceSelection("SIMULATION TERMINEE");
+    }//GEN-LAST:event_jButton_AnnulerActionPerformed
+
+    private void jButton_QuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuitterActionPerformed
+        System.exit(0);
+        
+    }//GEN-LAST:event_jButton_QuitterActionPerformed
 
     /**
      * @param args the command line arguments
      */
     
     // attributs : 
+    private int Humidite;
+    private int Longueur;
+    private int Largeur;
+    private int Pourcentage_Vegetation;
+    private int Grain;
+    private long Graine;
+    private String Direction_Vent;
+    private int Force_Vent;
+    private int Nb_Depart;
     static Terrain terrain =new Terrain();  
     static Vent wind;
     boolean DemarrageOK = false;
+    boolean Initialisation = true;
     
     public static void main(String args[]) {
         
-        Fenetre window=new Fenetre();
+        Fenetre window = new Fenetre();
         window.setVisible(true);
         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Demarrer;
-    private javax.swing.JButton GeneTerrain;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton_annuler;
-    private javax.swing.JButton jButton_quitter;
-    private javax.swing.JLabel jLabel_dirVent;
-    private javax.swing.JLabel jLabel_forceVent;
-    private javax.swing.JLabel jLabel_grain;
-    private javax.swing.JLabel jLabel_graine;
-    private javax.swing.JLabel jLabel_humidité;
-    private javax.swing.JLabel jLabel_largeur;
-    private javax.swing.JLabel jLabel_longueur;
-    private javax.swing.JLabel jLabel_nbDepart;
-    private javax.swing.JLabel jLabel_taille;
-    private javax.swing.JLabel jLabel_vege;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.JButton jButton_Annuler;
+    private javax.swing.JButton jButton_Demarrer;
+    private javax.swing.JButton jButton_GeneTerrain;
+    private javax.swing.JButton jButton_Quitter;
+    private javax.swing.JLabel jLabel_Direction_Vent;
+    private javax.swing.JLabel jLabel_Force_Vent;
+    private javax.swing.JLabel jLabel_Grain;
+    private javax.swing.JLabel jLabel_Graine;
+    private javax.swing.JLabel jLabel_Humidité;
+    private javax.swing.JLabel jLabel_Largeur;
+    private javax.swing.JLabel jLabel_Longueur;
+    private javax.swing.JLabel jLabel_Message;
+    private javax.swing.JLabel jLabel_Nb_Depart;
+    private javax.swing.JLabel jLabel_Taille;
+    private javax.swing.JLabel jLabel_Vege;
     private javax.swing.JRadioButton jRadioButton_Est;
     private javax.swing.JRadioButton jRadioButton_Nord;
     private javax.swing.JRadioButton jRadioButton_Ouest;
     private javax.swing.JRadioButton jRadioButton_Sud;
-    private javax.swing.JSlider jSlider_forceVent;
-    private javax.swing.JSlider jSlider_grain;
-    private javax.swing.JSlider jSlider_humidité;
-    private javax.swing.JSlider jSlider_vege;
-    private javax.swing.JTextField jTextField_graine;
-    private javax.swing.JTextField jTextField_largeur;
-    private javax.swing.JTextField jTextField_longueur;
-    private javax.swing.JTextField jTextField_nbDepart;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSlider jSlider_ForceVent;
+    private javax.swing.JSlider jSlider_Grain;
+    private javax.swing.JSlider jSlider_Humidité;
+    private javax.swing.JSlider jSlider_Pourcentage_Vegetation;
+    private javax.swing.JTextArea jTextArea_Message;
+    private javax.swing.JTextField jTextField_Graine;
+    private javax.swing.JTextField jTextField_Largeur;
+    private javax.swing.JTextField jTextField_Longueur;
+    private javax.swing.JTextField jTextField_NbDepart;
     // End of variables declaration//GEN-END:variables
 }

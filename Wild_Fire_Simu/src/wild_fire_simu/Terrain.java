@@ -264,7 +264,7 @@ public class Terrain {
     //Methode permettant de transformer les cases condamnees en cases qui brûlent, de plus les cases dejà en feu mais pas encore reduit en cendre voient leur etat de combustion augmenter de 1
     public void Iteration(){
         for (int i = 0;i<this.Grille_Terrain.length;i++){ //On parcourt la grille du terrain
-            for (int j = 0;j<this.Grille_Terrain.length;j++){
+            for (int j = 0;j<this.Grille_Terrain[0].length;j++){
                 
                 if(this.Grille_Terrain[i][j].getVegetation() == true && this.Grille_Terrain[i][j].getBrulure().equalsIgnoreCase("") && this.Grille_Terrain[i][j].getCondamne() == true){ //Si la case est condamne alors on la passe en etat enflamme
                     this.Grille_Terrain[i][j].setCombustion(this.Grille_Terrain[i][j].getCombustion()+1);
