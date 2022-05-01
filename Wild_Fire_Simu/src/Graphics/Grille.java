@@ -13,6 +13,7 @@ import wild_fire_simu.Vent;
  *
  *  Auteurs : Louis Savignac et Mathis Lopez 
  */
+
 public class Grille { // classe Grille, correspond à notre tableau
     
     // attributs

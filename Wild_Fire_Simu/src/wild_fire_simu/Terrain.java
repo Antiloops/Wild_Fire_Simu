@@ -17,7 +17,6 @@ public class Terrain {
     private Random random = new Random();
     
     private Case[][] Grille_Terrain; // Grille du terrain // type sera suremment modifie
-    //private int Temps_Terrain;  //Itteration de la partie
     private String Densite_Terrain; //Dentsite de vegetation du terrain
     
     

@@ -428,6 +428,7 @@ public class Fenetre extends javax.swing.JFrame {
             this.add(grPanel); // on ajoute à notre fenêtre notre panel
             grPanel.repaint(); // on repaint notre panel pour mettre à jour les couleurs du nouveau panel
             DemarrageOK = true; // notre boolean devient vrai ce qui permet de lancer une simulation
+            //On masque tous les components qui ne sont pas utiles dans la partie simulation et affiche ceux qui le sont
             jLabel_Taille.setVisible(false);
             jLabel_Longueur.setVisible(false);
             jLabel_Largeur.setVisible(false);
@@ -465,6 +466,7 @@ public class Fenetre extends javax.swing.JFrame {
         t.purge();  //On arrête le processus de calcul de propagation
         this.remove(grPanel); //On retire le panel de la fenêtre
         DemarrageOK = true;
+        //On masque les buttons qui ne sont pas utiles pour l'initialisation et on affiche ceux qui le sont
         jLabel_Taille.setVisible(true);
         jLabel_Longueur.setVisible(true);
         jLabel_Largeur.setVisible(true);
@@ -520,7 +522,6 @@ public class Fenetre extends javax.swing.JFrame {
     boolean Initialisation = true;
     
     public static void main(String args[]) {
-        
         Fenetre window = new Fenetre();
         window.setVisible(true);
         window.jButton_Annuler.setVisible(false);

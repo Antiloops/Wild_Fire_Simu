@@ -29,6 +29,7 @@ public class grillePanel extends javax.swing.JPanel {  // classe de notre panel 
         return gr1;// cette méthode renvoie notre grille
     }
     
+    //Méthode permmettant de changer la couleur d'un pixel sur le canvas 
     public void paint(Graphics g){
         for(int x = 0; x < gr1.getGrilleColors().length; x++){
             for(int y = 0; y < gr1.getGrilleColors()[0].length; y++){
