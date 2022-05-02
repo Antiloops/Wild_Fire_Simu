@@ -338,86 +338,87 @@ public class Fenetre extends javax.swing.JFrame {
         
         //Recuperation Longueur
         try{
+            Initialisation = true;
             Longueur = Integer.parseInt(jTextField_Longueur.getText()); //On recupere la valeur de la longueur dans le text field
             if(Longueur < 20){   //Si la longueur du terrain est inferieur a 20 alors le tableau est trop petit
                 jTextArea_Message.selectAll();
                 jTextArea_Message.replaceSelection("LONGUEUR : \nLa valeur n'est pas un entier ou le nombre est trop long");    //On affiche un message d'erreur
                 Initialisation = false; //On empêche la simulation de se lancer
             }
-        }catch (NumberFormatException ex){  //Dans le cas d'une exceptition on execute la boucle suivante
-            jTextArea_Message.selectAll();
-            jTextArea_Message.replaceSelection("LONGUEUR : \nLa valeur n'est pas un entier ou le nombre est trop long");    //On affiche un message d'erreur
-            Initialisation = false;  //On empêche la simulation de se lancer
-            //throw ex;   
-        }
-        //Recuperation Largeur
-        try{
-            Largeur = Integer.parseInt(jTextField_Largeur.getText());   //On recupere la valeur de la largeur dans le text field
-            if(Largeur < 20){   //Si la largeur du terrain est inferieur a 20 alors le tableau est trop petit
+            }catch (NumberFormatException ex){  //Dans le cas d'une exceptition on execute la boucle suivante
+                jTextArea_Message.selectAll();
+                jTextArea_Message.replaceSelection("LONGUEUR : \nLa valeur n'est pas un entier ou le nombre est trop long");    //On affiche un message d'erreur
+                Initialisation = false;  //On empêche la simulation de se lancer
+                //throw ex;   
+            }
+            //Recuperation Largeur
+            try{
+                Largeur = Integer.parseInt(jTextField_Largeur.getText());   //On recupere la valeur de la largeur dans le text field
+                if(Largeur < 20){   //Si la largeur du terrain est inferieur a 20 alors le tableau est trop petit
+                    jTextArea_Message.selectAll();
+                    jTextArea_Message.replaceSelection("LARGEUR : \nLa valeur n'est pas un entier ou le nombre est trop long");    //On affiche un message d'erreur
+                    Initialisation = false; //On empêche la simulation de se lancer
+                }
+            }catch (NumberFormatException ex){  //Dans le cas d'une exceptition on execute la boucle suivante
                 jTextArea_Message.selectAll();
                 jTextArea_Message.replaceSelection("LARGEUR : \nLa valeur n'est pas un entier ou le nombre est trop long");    //On affiche un message d'erreur
                 Initialisation = false; //On empêche la simulation de se lancer
+                //throw ex;    
             }
-        }catch (NumberFormatException ex){  //Dans le cas d'une exceptition on execute la boucle suivante
-            jTextArea_Message.selectAll();
-            jTextArea_Message.replaceSelection("LARGEUR : \nLa valeur n'est pas un entier ou le nombre est trop long");    //On affiche un message d'erreur
-            Initialisation = false; //On empêche la simulation de se lancer
-            //throw ex;    
-        }
-        //Recuperation Humidite
-        Humidite = jSlider_Humidité.getValue();
-        //Recuperation Pourcentage de Vegetation
-        Pourcentage_Vegetation = jSlider_Pourcentage_Vegetation.getValue();
-        //Recuperation Grain
-        Grain = jSlider_Grain.getValue();
-        //Recuperation Graine de generation
-        try{
-            Graine = Integer.parseInt(jTextField_Graine.getText());   //On recupere la valeur de la graine dans le text field
-            if(Graine < 0){   //Si la graine est négative alors on ne lance pas la simulation
+            //Recuperation Humidite
+            Humidite = jSlider_Humidité.getValue();
+            //Recuperation Pourcentage de Vegetation
+            Pourcentage_Vegetation = jSlider_Pourcentage_Vegetation.getValue();
+            //Recuperation Grain
+            Grain = jSlider_Grain.getValue();
+            //Recuperation Graine de generation
+            try{
+                Graine = Integer.parseInt(jTextField_Graine.getText());   //On recupere la valeur de la graine dans le text field
+                if(Graine < 0){   //Si la graine est négative alors on ne lance pas la simulation
+                    jTextArea_Message.selectAll();
+                    jTextArea_Message.replaceSelection("GRAINE : \nLa valeur ne peut pas être négative");    //On affiche un message d'erreur
+                    Initialisation = false; //On empêche la simulation de se lancer
+                }
+            }catch (NumberFormatException ex){  //Dans le cas d'une exceptition on execute la boucle suivante
                 jTextArea_Message.selectAll();
-                jTextArea_Message.replaceSelection("GRAINE : \nLa valeur ne peut pas être négative");    //On affiche un message d'erreur
+                jTextArea_Message.replaceSelection("GRAINE : \nLa valeur n'est pas un entier ou le nombre est trop long");    //On affiche un message d'erreur
                 Initialisation = false; //On empêche la simulation de se lancer
+                //throw ex;    
             }
-        }catch (NumberFormatException ex){  //Dans le cas d'une exceptition on execute la boucle suivante
-            jTextArea_Message.selectAll();
-            jTextArea_Message.replaceSelection("GRAINE : \nLa valeur n'est pas un entier ou le nombre est trop long");    //On affiche un message d'erreur
-            Initialisation = false; //On empêche la simulation de se lancer
-            //throw ex;    
-        }
-        //Recuperation Direction du vent
-        if(jRadioButton_Nord.isSelected()){ //On regarder quel radionbutton est selectionner sur la fenêtre
-            Direction_Vent = "NORD";
-        }
-        else if(jRadioButton_Sud.isSelected()){
-            Direction_Vent = "SUD";
-        }
-        else if(jRadioButton_Est.isSelected()){
-            Direction_Vent = "EST";
-        }
-        else if(jRadioButton_Ouest.isSelected()){
-            Direction_Vent = "OUEST";
-        }
-        else{   //Si aucun n'est selectionné alors on envoie un message et on empeche l'initialisation
-            jTextArea_Message.selectAll();
-            jTextArea_Message.replaceSelection("DIRECTION_VENT : \nIl faut selectionner une direction");
-            Initialisation = false;
-        }
-        //Recuperation Force du vent
-        Force_Vent = jSlider_ForceVent.getValue();
-        //Recuperation nombre de depart de feu
-        try{
-            Nb_Depart = Integer.parseInt(jTextField_NbDepart.getText());   //On recupere le nombre de depart de feu dans le text field
-            if(Nb_Depart < 0){   //Si le nombre est négatif alors on ne lance pas la simulation
+            //Recuperation Direction du vent
+            if(jRadioButton_Nord.isSelected()){ //On regarder quel radionbutton est selectionner sur la fenêtre
+                Direction_Vent = "NORD";
+            }
+            else if(jRadioButton_Sud.isSelected()){
+                Direction_Vent = "SUD";
+            }
+            else if(jRadioButton_Est.isSelected()){
+                Direction_Vent = "EST";
+            }
+            else if(jRadioButton_Ouest.isSelected()){
+                Direction_Vent = "OUEST";
+            }
+            else{   //Si aucun n'est selectionné alors on envoie un message et on empeche l'initialisation
                 jTextArea_Message.selectAll();
-                jTextArea_Message.replaceSelection("NB_DEPART : \nLa valeur ne peut pas être négative");    //On affiche un message d'erreur
-                Initialisation = false; //On empêche la simulation de se lancer
+                jTextArea_Message.replaceSelection("DIRECTION_VENT : \nIl faut selectionner une direction");
+                Initialisation = false;
             }
-        }catch (NumberFormatException ex){  //Dans le cas d'une exceptition on execute la boucle suivante
-            jTextArea_Message.selectAll();
-            jTextArea_Message.replaceSelection("NB_DEPART : \nLa valeur n'est pas un entier ou le nombre est trop long");    //On affiche un message d'erreur
-            Initialisation = false; //On empêche la simulation de se lancer
-            //throw ex;    
-        }
+            //Recuperation Force du vent
+            Force_Vent = jSlider_ForceVent.getValue();
+            //Recuperation nombre de depart de feu
+            try{
+                Nb_Depart = Integer.parseInt(jTextField_NbDepart.getText());   //On recupere le nombre de depart de feu dans le text field
+                if(Nb_Depart < 0){   //Si le nombre est négatif alors on ne lance pas la simulation
+                    jTextArea_Message.selectAll();
+                    jTextArea_Message.replaceSelection("NB_DEPART : \nLa valeur ne peut pas être négative");    //On affiche un message d'erreur
+                    Initialisation = false; //On empêche la simulation de se lancer
+                }
+            }catch (NumberFormatException ex){  //Dans le cas d'une exceptition on execute la boucle suivante
+                jTextArea_Message.selectAll();
+                jTextArea_Message.replaceSelection("NB_DEPART : \nLa valeur n'est pas un entier ou le nombre est trop long");    //On affiche un message d'erreur
+                Initialisation = false; //On empêche la simulation de se lancer
+                //throw ex;    
+            }
         
         //Initialisation du terrain        
         if(Initialisation == true){
