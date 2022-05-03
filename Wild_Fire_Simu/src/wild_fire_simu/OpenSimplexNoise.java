@@ -6,8 +6,8 @@
 package wild_fire_simu;
 
 /**
- *
- * @author louis
+ * Créer par KdotJPG
+ * intégrer par Louis SAVIGNAC
  */
 
 public class OpenSimplexNoise {

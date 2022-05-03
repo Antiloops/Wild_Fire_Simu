@@ -29,8 +29,6 @@ public class Terrain {
         return this.Grille_Terrain;
     }
     
-    
-    
     public String getDensite(){
         return this.Densite_Terrain;
     }
@@ -39,8 +37,6 @@ public class Terrain {
     public void setCase(Case[][] Grille_Terrain){
         this.Grille_Terrain = Grille_Terrain;
     }
-    
-    
     
     public void setDensite(String Densite_Terrain){
         this.Densite_Terrain = Densite_Terrain;
